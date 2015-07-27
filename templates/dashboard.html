@@ -3,9 +3,54 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>IceBreaker</title>
+
   </head>
+
   <body>
-    <h1>Hello!</h1>
+
+    <div class="pure-menu pure-menu-horizontal">
+        <a href="#" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+      <div class="banner">
+          <h1 class="banner-head" id="title">
+              IceBreaker
+          </h1>
+          <p>Welcome to IceBreaker, a creative way to stay active during study times.</p>
+      </div>
+      <div class="activity-choice">
+        <h2>Start Studying</h2>
+        <h2>Need a Break</h2>
+      </div>
+    </div>
+
+    <div id="signup">
+      <form class="pure-form pure-form-aligned" method="post" action="/login">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="name">Username</label>
+            <input id="name" type="text" placeholder="Username">
+          </div>
+
+          <div class="pure-control-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Password">
+          </div>
+
+          <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
   </body>
 </html>

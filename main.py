@@ -28,6 +28,12 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.write(template.render())
 
+class TimerTestHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/timer.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/timer', TimerTestHandler),
 ], debug=True)
