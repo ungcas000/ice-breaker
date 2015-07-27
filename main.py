@@ -28,6 +28,11 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.write(template.render())
 
+    def post(self):
+        template = jinja_environment.get_template('templates/study.html')
+
+        self.response.write(tempalte.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
