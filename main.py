@@ -38,9 +38,9 @@ class TimerTestHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/timer.html')
         self.response.write(template.render())
 
-class StudyHandler(webapp2.RequestHandler):
+class BreakHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('templates/study.html')
+        template = jinja_environment.get_template('templates/break.html')
         self.response.write(template.render())
 
     def post(self):
@@ -57,9 +57,13 @@ class StudyHandler(webapp2.RequestHandler):
                 return random.choice(activity2_dict)
 
         activity = getActivity()
+        template = jinja_environment.get_template('templates/activity.html')
+        break_vars = {'break' : self.request.get('break'), 'activity' : activity}
 
-        self.response.write('<h1> Break the Ice </h1>' + '<br>' + 'You have ' + self.request.get('break') + ' minute(s).' + '<br>')
-        self.response.write(' <h2> Your challenge: </h2> ' + activity)
+        self.response.write(template.render(break_vars))
+
+        # self.response.write('<h1> Break the Ice </h1>' + '<br>' + 'You have ' + self.request.get('break') + ' minute(s).' + '<br>')
+        # self.response.write(' <h2> Your challenge: </h2> ' + activity)
 
 
 
@@ -67,5 +71,5 @@ class StudyHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/timer', TimerTestHandler),
-    ('/study', StudyHandler),
+    ('/break', BreakHandler),
 ], debug=True)
