@@ -95,8 +95,6 @@ class BreakHandler(webapp2.RequestHandler):
 
         self.response.write(template.render(break_vars))
 
-        # self.response.write('<h1> Break the Ice </h1>' + '<br>' + 'You have ' + self.request.get('break') + ' minute(s).' + '<br>')
-        # self.response.write(' <h2> Your challenge: </h2> ' + activity)
 
 class StartStudyingHandler(webapp2.RequestHandler):
     def get(self):
