@@ -38,6 +38,12 @@ class BreakUser(ndb.Model):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+
+        #creating user
+        googleUser = users.get_current_user()
+        userGoogleID = googleUser.user_id()
+        newUser = BreakUser(identity = userGoogleID)
+
         template = jinja_environment.get_template('templates/dashboard.html')
         self.response.write(template.render())
 
@@ -48,18 +54,26 @@ class TimerHandler(webapp2.RequestHandler):
 
     def post(self):
 
-        googleUser = users.get_current_user()
-        userGoogleID = googleUser.user_id()
 
         #reads the data inputed by the start studying page into the database
         userStudyTime = int(self.request.get('timeToStudy'))
         userBreakTime = int(self.request.get('timeToBreak'))
 
-        newUser = BreakUser(studyTime = userStudyTime, breakTime = userBreakTime, identity = userGoogleID)
-        newUserID = newUser.put()
+        # newUser = BreakUser(studyTime = userStudyTime, breakTime = userBreakTime, identity = userGoogleID)
+        # newUserID = newUser.put()
 
 
         #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            currUser = users.get_current_user()
+            currID = currUser.user_id()
+            if( indivUser.identity == currID):
+                #found user model created in main
+                indivUser.studyTime = userStudyTime
+                indivUser.breakTime = userBreakTime
+                indivUser.put
+
+
 
 
         #user variables   NEED TO ACCESS
