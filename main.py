@@ -59,9 +59,12 @@ class TimerHandler(webapp2.RequestHandler):
         newUserID = newUser.put()
 
 
+        #finding the right user
+
+
         #user variables   NEED TO ACCESS
-        userStudyTime = self.request.get('study')
-        userBreakTime = self.request.get('break')
+        userStudyTime = 90
+        userBreakTime = 20
 
         #dictionary for jinja replacement
         templateVars = {
