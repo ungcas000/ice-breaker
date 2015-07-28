@@ -27,7 +27,7 @@ from google.appengine.api import urlfetch
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 #This is the model that stores data for the user
-class User(ndb.Model):
+class BreakUser(ndb.Model):
     endHours = ndb.IntegerProperty()
     endMinutes = ndb.IntegerProperty()
     endSeconds = ndb.IntegerProperty()
@@ -49,7 +49,7 @@ class TimerHandler(webapp2.RequestHandler):
         userStudyTime = int(self.request.get('timeToStudy'))
         userBreakTime = int(self.request.get('timeToBreak'))
 
-        newUser = User(studyTime = userStudyTime, breakTime = userBreakTime)
+        newUser = BreakUser(studyTime = userStudyTime, breakTime = userBreakTime)
         newUserID = newUser.put()
 
 
