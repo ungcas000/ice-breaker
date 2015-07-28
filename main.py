@@ -84,6 +84,7 @@ class TimerHandler(webapp2.RequestHandler):
 
     def post(self):
 
+        logging.info("")
         currUser = users.get_current_user()
         currID = currUser.user_id()
 
