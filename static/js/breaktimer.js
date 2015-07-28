@@ -80,7 +80,7 @@ function endTime(userDur){
 }
 
 
-/*
+/* OBSOLETE
 * this JQuery function is now obsolete
 *
 * this JQuery function responds to a button click and calls the startTime() function
