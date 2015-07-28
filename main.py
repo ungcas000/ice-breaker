@@ -135,6 +135,22 @@ class BreaktimerHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/breaktimer.html')
         self.response.write(template.render(template2Vars))
 
+        # search_url = ('http://api.giphy.com/v1/gifs/search?q=%s' +
+        #             '&api_key=dc6zaTOxFJmzC' +
+        #             '&limit=10')
+        #
+        #             'https://www.youtube.com/results?search_query=%s' + '&api_key=AIzaSyCRxiJ2RmC3ilCTe-6XG-undrs0uVs1RqM'
+        # search_term = self.request.get('search')
+        # search_term = search_term.replace(' ', '+')
+        # logging.info(search_term)
+        # query_url = search_url % search_term
+        # url_fetch_response = urlfetch.fetch(query_url)
+        # json_string = url_fetch_response.content
+        # response_dict = json.loads(json_string)
+        # gif_url= response_dict['data'][0]['images']['original']['url']
+        # self.response.out.write(template.render({
+        #     'url': gif_url}))
+
 
 
 class BreakHandler(webapp2.RequestHandler):
