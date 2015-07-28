@@ -35,16 +35,43 @@ class BreakUser(ndb.Model):
     studyTime = ndb.IntegerProperty()
     identity = ndb.StringProperty(required = True)
 
+#this test returns true if the current user is NOT in the database
+#it will return false if the user IS in the database
+def CreateNewUser(currentUserID):
+    #all users already in datastore
+    allUserIDs = []
+    #create list of all registered users
+    logging.info("generating a list of all known users")
+    for indivUser in BreakUser.query().fetch():
+        tempID = indivUser.identity
+        logging.info("adding known user %s to the list", tempID)
+        allUserIDs.append(tempID)
+    #compare current user to registered users to see if already registered
+    for userID in allUserIDs:
+        logging.info("comparing current user %s with known user %s",
+                      currentUserID, userID)
+        if(userID == currentUserID):
+            logging.info("result of test is false")
+            return False
+    #not in database
+    logging.info("result of test is true")
+    return True
+
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-
-        #creating user
+        #creates a user for the current user on the page
         googleUser = users.get_current_user()
         userGoogleID = googleUser.user_id()
-        #if user in bank already DONT re add
-        newUser = BreakUser(identity = userGoogleID)
-        newUser.put()
+        logging.info("current user %s created", userGoogleID)
+
+        #run testForUser to see if in database
+        userTest = CreateNewUser(userGoogleID)
+        logging.info("result of CreateNewUser test for user %s is %s", userGoogleID, userTest)
+        if(userTest):
+            newUser = BreakUser(identity = userGoogleID)
+            newUser.put()
 
         template = jinja_environment.get_template('templates/dashboard.html')
         self.response.write(template.render())
@@ -55,8 +82,6 @@ class TimerHandler(webapp2.RequestHandler):
         self.post()
 
     def post(self):
-
-
 
         currUser = users.get_current_user()
         currID = currUser.user_id()
