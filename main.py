@@ -27,6 +27,7 @@ from google.appengine.api import urlfetch
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 #This is the portion of the code that stores the ending time for the timer
+#may need to create a user model instead
 class Timer(ndb.Model):
     hours = ndb.IntegerProperty(required = True)
     minutes = ndb.IntegerProperty(required = True)
