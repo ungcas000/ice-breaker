@@ -12,8 +12,6 @@ function startTime() {
     var hour=today.getHours()
     var min=today.getMinutes()
     var sec=today.getSeconds()
-    // min = checkTime(min)
-    // sec = checkTime(sec)
     todayArray = []
     todayArray[0] = parseInt(hour)
     todayArray[1] = parseInt(min)
@@ -129,17 +127,7 @@ function runTimer(endArray){
 
       }
     },1000)
-
-
-
 }
-
-
-
-
-
-
-
 
 
 
