@@ -60,8 +60,8 @@ class TimerHandler(webapp2.RequestHandler):
 
 
         #user variables   NEED TO ACCESS
-        userStudyTime = 90
-        userBreakTime = 20
+        userStudyTime = self.request.get('study')
+        userBreakTime = self.request.get('break')
 
         #dictionary for jinja replacement
         templateVars = {
@@ -101,8 +101,6 @@ class BreakHandler(webapp2.RequestHandler):
 
         self.response.write(template.render(break_vars))
 
-        # self.response.write('<h1> Break the Ice </h1>' + '<br>' + 'You have ' + self.request.get('break') + ' minute(s).' + '<br>')
-        # self.response.write(' <h2> Your challenge: </h2> ' + activity)
 
 class StartStudyingHandler(webapp2.RequestHandler):
     def get(self):
