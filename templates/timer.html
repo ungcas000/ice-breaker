@@ -5,15 +5,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
   </head>
-  <body >
+  <body onload="endTime({{studyTime}})">
     <br>
 
-    How long? <input type="text" id="timeInterval"> minutes<br>
-    <!-- <input type='button' value='Enter' id="enterButton" /> -->
-    <form action="/break" method="post">
+    <!-- How long? <input type="text" id="timeInterval"> minutes<br>
+    <input type='button' value='Enter' id="enterButton" /> -->
+    <!-- <form action="/break" method="post">
       <button type="submit" value="{{break}}" name="enter"> enter</button>
-    </form>
+    </form> -->
+    <!-- How long? <input type="text" id="timeInterval"> minutes<br> -->
 
+    You want to study for {{studyTime}} minutes
+    <!-- <div id="timeInterval" value={{studyTime}}> -->
+    <!-- <input type='button' value='Enter' id="enterButton" /> -->
 
     <br>
     <br>
@@ -37,3 +41,18 @@
     <script type="text/javascript" src="static/js/timer.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <input type='button' value='Enter' id="enterButton" /> -->
+<!-- <form action="/break" method="post">
+  <button type="submit" value="{{break}}" name="enter"> enter</button>
+</form> -->

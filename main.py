@@ -43,9 +43,33 @@ class MainHandler(webapp2.RequestHandler):
 
 
 class TimerHandler(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
+
+        #reads the data inputed by the start studying page into the database
+        userStudyTime = int(self.request.get('timeToStudy'))
+        userBreakTime = int(self.request.get('timeToBreak'))
+
+        newUser = User(studyTime = userStudyTime, breakTime = userBreakTime)
+        newUserID = newUser.put()
+
+
+        #user variables   NEED TO ACCESS
+        userStudyTime = 90
+        userBreakTime = 20
+
+        #dictionary for jinja replacement
+        templateVars = {
+            'studyTime': userStudyTime,    #need to access current user data
+            'breakTime': userBreakTime    #need to access current user data
+        }
+
         template = jinja_environment.get_template('templates/timer.html')
-        self.response.write(template.render())
+        self.response.write(template.render(templateVars))
+
+
+
+
+
 
 class BreakHandler(webapp2.RequestHandler):
     def get(self):
@@ -79,17 +103,15 @@ class StartStudyingHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/startStudying.html')
         self.response.write(template.render())
 
-    def post(self):
-        # template = jinja_environment.get_template('templates/startStudying.html')
+    #     #this is not needed b/c copied to the timer handler
+    # def post(self):
+    #     #store study time and break time into database
+    #     userStudyTime = int(self.request.get('timeToStudy'))
+    #     userBreakTime = int(self.request.get('timeToBreak'))
+    #
+    #     newUser = User(studyTime = userStudyTime, breakTime = userBreakTime)
+    #     newUserID = newUser.put()
 
-        #store study time and break time into database
-        userStudyTime = int(self.request.get('timeToStudy'))
-        userBreakTime = int(self.request.get('timeToBreak'))
-
-        newUser = User(studyTime = userStudyTime, breakTime = userBreakTime)
-        newUserID = newUser.put()
-
-        # self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
