@@ -1,14 +1,15 @@
+<!-- this is the file for the html code for the studying page -->
+
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../static/css/break.css">
-
-    <title>Break!</title>
+    <title>Studying</title>
   </head>
   <body>
-    <h1>Break!</h1>
-    <h2>Time to Move On!</h2>
+    <h1>Need a Break</h1>
+    <form method = "post" action = "/break">
+      <p> How long do you want to break for? <input type = "text" name = "break"> </p>
+      <button name="randomize" type="submit" value="HTML">Randomize</button>
+    </form>
   </body>
 </html>
