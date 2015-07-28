@@ -11,11 +11,15 @@
       <p> You have {{break}} minute(s) of break. </p>
       <h2> Your challenge: </h2>
       <p> {{activity}} </p>
-      <button name="continue" type="submit" value="HTML"> continue </button>
+
     </form>
 
-      <form action="/break" method="post">
-        <button type="submit" value="{{break}}" name="break"> reshuffle</button>
-      </form>
+    <form action="/timer" method="get">
+      <button name="continue" type="submit" value="{{break}}">continue</button>
+    </form>
+
+    <form action="/break" method="post">
+      <button type="submit" value="{{break}}" name="break">reshuffle</button>
+    </form>
   </body>
 </html>

@@ -75,7 +75,7 @@ class BreakHandler(webapp2.RequestHandler):
         # self.response.write(' <h2> Your challenge: </h2> ' + activity)
 
 class StartStudyingHandler(webapp2.RequestHandler):
-    def post(self):
+    def get(self):
         template = jinja_environment.get_template('templates/startStudying.html')
 
         self.response.write(template.render())
