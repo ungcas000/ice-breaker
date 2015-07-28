@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/startStudying.css">
+
     <title>Start Studying</title>
   </head>
   <body>
+
+    <div class="pure-menu pure-menu-horizontal heading">
+        <a href="dashboard.html" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
+        </ul>
+    </div>
+
     <h1>Welcome to the start studying page!</h1>
 
     <form method="post" action="/timer">
@@ -13,6 +25,10 @@
     </form>
 
 
-
+    <div class="footer l-box">
+        <p>
+            Created for <a href="#">Google CSSI.</a>
+        </p>
+    </div>
   </body>
 </html>
