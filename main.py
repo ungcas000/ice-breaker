@@ -44,8 +44,26 @@ class MainHandler(webapp2.RequestHandler):
 
 class TimerHandler(webapp2.RequestHandler):
     def get(self):
+
+
+
+        #user variables   NEED TO ACCESS
+        userStudyTime = 90
+        userBreakTime = 20
+
+        #dictionary for jinja replacement
+        templateVars = {
+            'studyTime': userStudyTime,    #need to access current user data
+            'breakTime': userBreakTime    #need to access current user data
+        }
+
         template = jinja_environment.get_template('templates/timer.html')
-        self.response.write(template.render())
+        self.response.write(template.render(templateVars))
+
+
+
+
+
 
 class BreakHandler(webapp2.RequestHandler):
     def get(self):

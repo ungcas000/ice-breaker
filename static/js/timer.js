@@ -1,4 +1,15 @@
 /*
+* need to feed data from python into html and then access it by calling
+* in the html
+*/
+
+
+
+
+
+
+
+/*
 * the startTime() function returns the time associated with the
 * start of the function (when the user hits the enter button)
 *
@@ -32,11 +43,12 @@ function startTime() {
 * postcondition: an array of the two time arrays (start and end arrays) is returned
 * postcondition2: an array of only the ending time is returned (CURRENT VERSION)
 */
-function endTime(startTime, userDur){
+function endTime(userDur){
+  starting = startTime()
   userDur = parseInt(userDur)
   timeArray = []
-  timeArray[0] = startTime
-  endTime = startTime
+  timeArray[0] = starting
+  endTime = starting
   console.log("Duration: ",userDur)
   showStartTime(timeArray[0])
 
@@ -73,7 +85,9 @@ function endTime(startTime, userDur){
     timeArray[1] = endTime
   }
   showEndTime(timeArray[1])
-  return timeArray[1]
+  // return timeArray[1]
+
+  runTimer(timeArray[1])
 }
 
 
