@@ -33,23 +33,29 @@ class BreakUser(ndb.Model):
     endSeconds = ndb.IntegerProperty()
     breakTime = ndb.IntegerProperty()
     studyTime = ndb.IntegerProperty()
+    identity = ndb.StringProperty(required = True)
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/dashboard.html')
-
         self.response.write(template.render())
 
 
 class TimerHandler(webapp2.RequestHandler):
+    def get(self):
+        self.post()
+
     def post(self):
+
+        googleUser = users.get_current_user()
+        userGoogleID = googleUser.user_id()
 
         #reads the data inputed by the start studying page into the database
         userStudyTime = int(self.request.get('timeToStudy'))
         userBreakTime = int(self.request.get('timeToBreak'))
 
-        newUser = BreakUser(studyTime = userStudyTime, breakTime = userBreakTime)
+        newUser = BreakUser(studyTime = userStudyTime, breakTime = userBreakTime, identity = userGoogleID)
         newUserID = newUser.put()
 
 
