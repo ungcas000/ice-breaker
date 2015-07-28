@@ -26,6 +26,7 @@ from google.appengine.api import urlfetch
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
+
 #This is the model that stores data for the user
 class BreakUser(ndb.Model):
     endHours = ndb.IntegerProperty()
