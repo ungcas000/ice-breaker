@@ -55,9 +55,6 @@ class TimerHandler(webapp2.RequestHandler):
     def post(self):
 
 
-        #reads the data inputed by the start studying page into the database
-        userStudyTime = int(self.request.get('timeToStudy'))
-        userBreakTime = int(self.request.get('timeToBreak'))
 
         # newUser = BreakUser(studyTime = userStudyTime, breakTime = userBreakTime, identity = userGoogleID)
         # newUserID = newUser.put()
@@ -69,8 +66,8 @@ class TimerHandler(webapp2.RequestHandler):
             currID = currUser.user_id()
             if( indivUser.identity == currID):
                 #found user model created in main
-                indivUser.studyTime = userStudyTime
-                indivUser.breakTime = userBreakTime
+                indivUser.studyTime = int(self.request.get('timeToStudy'))
+                indivUser.breakTime = int(self.request.get('timeToBreak'))
                 indivUser.put
 
 
