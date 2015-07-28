@@ -3,9 +3,84 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../static/css/dashboard.css">
+  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
     <title>IceBreaker</title>
+
   </head>
+
   <body>
-    <h1>Hello!</h1>
+
+    <div class="pure-menu pure-menu-horizontal heading">
+        <a href="#" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+      <div class="banner">
+          <h1 class="banner-head" id="title">
+              IceBreaker<br>
+              Your Friendly Study and Break Timer
+          </h1>
+      </div>
+    </div>
+
+    <div id="signup">
+      <form class="pure-form pure-form-aligned" method="post" action="/login">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="name">Username</label>
+            <input id="name" type="text" placeholder="Username">
+          </div>
+
+          <div class="pure-control-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Password">
+          </div>
+
+          <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="activity-choice pure-g">
+
+      <div class="pure-u-1-2">
+        <div class="activity-header">
+          <div class="study">
+            <h2>Start Studying</h2>
+            <span>
+              Begin timer and study session
+            </span><br>
+            <a href="#" class="button-choose pure-button">Select</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-u-1-2">
+        <div class="activity-header">
+          <div class="break">
+            <h2>Need a Break</h2>
+            <span>
+              Enjoy a random activity with the time that you have
+            </span><br>
+            <a href="#" class="button-choose pure-button">Select</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer l-box">
+        <p>
+            Created for Google CSSI.
+        </p>
+    </div>
   </body>
 </html>

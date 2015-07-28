@@ -1,1 +1,85 @@
 /*this is the css file for the dashboard*/
+
+
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.banner {
+    background: transparent url('../images/dashboard_book.jpg') 0 0 no-repeat fixed;
+    text-align: center;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/dashboard_book.jpg', sizingMethod='scale');
+
+    height: 350px;
+    width: 100%;
+    margin-bottom: 3em;
+    display: table;
+}
+
+.banner-head {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0;
+    font-size: 4em;
+    color: white;
+    font-weight: 500;
+    text-shadow: 0 2px 2px black;
+}
+
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.activity-header {
+    margin-top: 2em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1em;
+    padding: 0;
+    text-align: center;
+}
+
+.activity-header h2 {
+    font-size: 4em;
+    margin: 0.2em 0 0;
+    font-weight: 100;
+}
+
+.activity-header span {
+    display: block;
+    text-transform: uppercase;
+    font-size: 1em;
+    padding-bottom: 2em;
+    font-weight: 400;
+    color: black;
+}
+
+#signup {
+    padding-left: 28em;
+}
+
+.l-box {
+    padding: 0.5em 2em;
+    margin-top: 3em;
+}
+
+.footer {
+    background: rgb(0, 75, 150);
+    color: rgb(224, 224, 224);
+    text-align: center;
+}
+
+.pure-menu-heading {
+  color: rgb(224, 224, 224);
+}
+
+.pure-menu-link {
+  color: rgb(224, 224, 224);
+}
+
+.heading {
+  background: rgb(0, 75, 150);
+  color: rgb(224, 224, 244);
+}

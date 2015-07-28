@@ -21,6 +21,7 @@ from google.appengine.api import users
 import random
 from random import choice
 import logging
+from google.appengine.api import urlfetch
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
