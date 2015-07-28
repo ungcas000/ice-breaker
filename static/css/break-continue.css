@@ -1,20 +1,3 @@
-.pure-menu {
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
-}
-
-.pure-menu-heading {
-  color: rgb(224, 224, 224);
-}
-
-.pure-menu-link {
-  color: rgb(224, 224, 224);
-}
-
-.heading {
-  background: rgb(0, 75, 150);
-  color: rgb(224, 224, 244);
-}
-
 .pure-button {
    background-color: #1f8dd6;
    color: white;
@@ -24,20 +7,45 @@
 
 a.pure-button-primary {
    background: white;
-   color: #1f8dd6;
+   font-family: 'Noto Sans', sans-serif;
+   font-weight: bold;
+   color: rgb(250, 50, 50);
    border-radius: 5px;
    font-size: 120%;
 }
 
-
-
-.l-box {
-    padding: 0.5em 2em;
-    margin-top: 3em;
+.container {
+    background: rgb(250, 50, 50);
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
 }
 
-.footer {
-    background: rgb(0, 75, 150);
-    color: rgb(224, 224, 224);
+.case-page {
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    position: absolute;
+    top: 100px; left: 0; bottom: 0; right: 0;
     text-align: center;
+    text-transform: uppercase;
+}
+
+.head {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+    border: 4px dashed white;
+    padding: 1em 1.6em;
+    font-weight: 150;
+    border-radius: 30px;
+    line-height: 2cm;
+}
+
+h2 {
+    color: white;
+    letter-spacing: .5px;
 }
