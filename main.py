@@ -82,9 +82,6 @@ class TimerHandler(webapp2.RequestHandler):
         self.post()
 
     def post(self):
-
-        logging.info("")
-
         logging.info("enter TimerHandler")
         currUser = users.get_current_user()
         currID = currUser.user_id()
@@ -116,29 +113,27 @@ class BreaktimerHandler(webapp2.RequestHandler):
         self.post()
 
     def post(self):
-
-
-
+        logging.info("enter breaktimerHandler")
         currUser = users.get_current_user()
         currID = currUser.user_id()
-
+        logging.info("current user id: %s", currID)
         #finding the right user
         for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
             if( indivUser.identity == currID):
                 #found user model created in main
-                indivUser.breakTime = int(self.request.get('break'))
-                indivUser.put()
-                userBreakTime = indivUser.breakTime
+                logging.info("found correct database user")
+                breakTime = indivUser.breakTime
+                break
 
 
         #dictionary for jinja replacement
         template2Vars = {
-            'breakTime': userBreakTime,    #need to access current user data
+            'breakTime': breakTime,    #need to access current user data
         }
 
         template = jinja_environment.get_template('templates/breaktimer.html')
         self.response.write(template.render(template2Vars))
-
 
 
 
@@ -148,6 +143,26 @@ class BreakHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
+        #updating user info to represent how long they want to break for
+        logging.info("enter breakHandler")
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
+            if( indivUser.identity == currID):
+                #found user model created in main
+                logging.info("found correct database user")
+                indivUser.breakTime = int(self.request.get('break'))
+                indivUser.put()
+                # userStudyTime = indivUser.studyTime
+                break
+
+        logging.info("updated user in database")
+
+
+
 
         #returns length of break and challenge
         def getActivity():
