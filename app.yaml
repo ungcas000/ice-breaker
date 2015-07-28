@@ -13,6 +13,7 @@ handlers:
   upload: favicon\.ico
 
 - url: .*
+  login: required
   script: main.app
 
 libraries:
