@@ -23,6 +23,7 @@ import random
 from random import choice
 import logging
 from google.appengine.api import urlfetch
+import datetime
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
@@ -57,6 +58,35 @@ def CreateNewUser(currentUserID):
     #not in database
     logging.info("result of test is true")
     return True
+
+
+def SetEndTime(currentUserID, userDur):
+    #updating time
+    logging.info("entered SetEndTime function")
+    time = datetime.datetime.now().time()
+    logging.info("testing time function: ", time)
+
+
+
+    # logging.info("enter SetEndTme function")
+    # currUser = users.get_current_user()
+    # currID = currUser.user_id()
+    # logging.info("current user id: %s", currID)
+    # #finding the right user
+    # for indivUser in BreakUser.query().fetch():
+    #     logging.info("looking for correct database user")
+    #     if( indivUser.identity == currID):
+    #         #found user model created in main
+    #         logging.info("found correct database user")
+    #         indivUser.studyTime = int(self.request.get('timeToStudy'))
+    #         indivUser.put()
+    #         # userStudyTime = indivUser.studyTime
+    #         break
+    #
+    # logging.info("updated user in database")
+
+
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -107,6 +137,8 @@ class TimerHandler(webapp2.RequestHandler):
 
         template = jinja_environment.get_template('templates/timer.html')
         self.response.write(template.render(templateVars))
+
+        SetEndTime(indivUser.identity, indivUser.studyTime)
 
 class BreaktimerHandler(webapp2.RequestHandler):
     def get(self):
