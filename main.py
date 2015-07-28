@@ -18,9 +18,15 @@ import jinja2
 import os
 import webapp2
 from google.appengine.api import users
+from google.appengine.ext import ndb
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
+#This is the portion of the code that stores the ending time for the timer
+class Timer(ndb.Model):
+    hours = ndb.IntegerProperty(required = True)
+    minutes = ndb.IntegerProperty(required = True)
+    seconds = ndb.IntegerProperty(required = True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
