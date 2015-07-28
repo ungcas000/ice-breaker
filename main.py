@@ -67,7 +67,7 @@ class TimerHandler(webapp2.RequestHandler):
             if( indivUser.identity == currID):
                 #found user model created in main
                 indivUser.studyTime = int(self.request.get('timeToStudy'))
-                indivUser.breakTime = int(self.request.get('timeToBreak'))
+                # indivUser.breakTime = int(self.request.get('timeToBreak'))
                 indivUser.put
 
 
@@ -75,12 +75,10 @@ class TimerHandler(webapp2.RequestHandler):
 
         #user variables   NEED TO ACCESS
         userStudyTime = 90
-        userBreakTime = 20
 
         #dictionary for jinja replacement
         templateVars = {
             'studyTime': userStudyTime,    #need to access current user data
-            'breakTime': userBreakTime    #need to access current user data
         }
 
         template = jinja_environment.get_template('templates/timer.html')
