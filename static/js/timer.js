@@ -1,15 +1,4 @@
 /*
-* need to feed data from python into html and then access it by calling
-* in the html
-*/
-
-
-
-
-
-
-
-/*
 * the startTime() function returns the time associated with the
 * start of the function (when the user hits the enter button)
 *
@@ -92,6 +81,8 @@ function endTime(userDur){
 
 
 /*
+* this JQuery function is now obsolete
+*
 * this JQuery function responds to a button click and calls the startTime() function
 * and the endTime() function
 *
