@@ -1,0 +1,27 @@
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.pure-menu-heading {
+  color: rgb(224, 224, 224);
+}
+
+.pure-menu-link {
+  color: rgb(224, 224, 224);
+}
+
+.heading {
+  background: rgb(0, 75, 150);
+  color: rgb(224, 224, 244);
+}
+
+.l-box {
+    padding: 0.5em 2em;
+    margin-top: 3em;
+}
+
+.footer {
+    background: rgb(0, 75, 150);
+    color: rgb(224, 224, 224);
+    text-align: center;
+}
