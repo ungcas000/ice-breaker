@@ -3,9 +3,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/activity.css">
+
     <title> Activities </title>
   </head>
   <body>
+
+    <div class="pure-menu pure-menu-horizontal heading">
+        <a href="#" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
+        </ul>
+    </div>
+
     <h1> Break the Ice </h1>
     <form method="post">
       <p> You have {{break}} minute(s) of break. </p>
@@ -17,5 +29,11 @@
       <form action="/break" method="post">
         <button type="submit" value="{{break}}" name="break"> reshuffle</button>
       </form>
+
+      <div class="footer l-box">
+          <p>
+              Created for Google CSSI.
+          </p>
+      </div>
   </body>
 </html>
