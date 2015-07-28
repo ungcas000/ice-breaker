@@ -83,7 +83,33 @@ class TimerHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/timer.html')
         self.response.write(template.render(templateVars))
 
+class BreaktimerHandler(webapp2.RequestHandler):
+    def get(self):
+        self.post()
 
+    def post(self):
+
+
+
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            if( indivUser.identity == currID):
+                #found user model created in main
+                indivUser.breakTime = int(self.request.get('break'))
+                indivUser.put()
+                userBreakTime = indivUser.breakTime
+
+
+        #dictionary for jinja replacement
+        template2Vars = {
+            'breakTime': userBreakTime,    #need to access current user data
+        }
+
+        template = jinja_environment.get_template('templates/breaktimer.html')
+        self.response.write(template.render(template2Vars))
 
 
 
@@ -132,5 +158,6 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/timer', TimerHandler),
     ('/break', BreakHandler),
-    ('/study', StartStudyingHandler)
+    ('/study', StartStudyingHandler),
+    ('/breaktimer', BreaktimerHandler),
 ], debug=True)

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clock</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  </head>
+  <body onload="endTime({{studyTime}})">
+    <br>
+
+
+    <br>
+    <br>
+    You want to break for {{breakTime}}
+
+    <br>
+    <br>
+
+    Start Time<div id='startTime'></div>
+    End Time<div id='endTime'></div>
+    <br>
+    <br>
+    Current Time<div id='clock'></div>
+
+
+
+    <br>
+    <br>
+    Time Remaining<div id='timer'></div>
+
+    <form action="/break" method="get">
+      <button name="continue" type="submit">break</button>
+    </form>
+
+
+
+    <script type="text/javascript" src="static/js/timer.js"></script>
+  </body>
+</html>
