@@ -84,19 +84,22 @@ class TimerHandler(webapp2.RequestHandler):
 
     def post(self):
 
-        logging.info("")
+        logging.info("enter TimerHandler")
         currUser = users.get_current_user()
         currID = currUser.user_id()
-
+        logging.info("current user id: %s", currID)
         #finding the right user
         for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
             if( indivUser.identity == currID):
                 #found user model created in main
+                logging.info("found correct database user")
                 indivUser.studyTime = int(self.request.get('timeToStudy'))
-                indivUser.put
-                userStudyTime = indivUser.studyTime
+                indivUser.put()
+                # userStudyTime = indivUser.studyTime
+                break
 
-
+        logging.info("updated user in database")
 
 
         #user variables   NEED TO ACCESS
@@ -104,7 +107,7 @@ class TimerHandler(webapp2.RequestHandler):
 
         #dictionary for jinja replacement
         templateVars = {
-            'studyTime': userStudyTime,    #need to access current user data
+            'studyTime': indivUser.studyTime    #need to access current user data
         }
 
         template = jinja_environment.get_template('templates/timer.html')
