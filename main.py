@@ -50,7 +50,7 @@ class BreakHandler(webapp2.RequestHandler):
             activity_dict = ['Go for a run', 'Do Yoga', 'Attend a dance class']
             activity2_dict = ['Jumping Jacks', 'Push-ups', 'Plank']
 
-            if self.request.get('break') >= '20':
+            if self.request.get('break') >= '15':
                 return random.choice(activity_dict)
 
             else:

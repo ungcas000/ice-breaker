@@ -7,12 +7,15 @@
   </head>
   <body>
     <h1> Break the Ice </h1>
-    <form type = "post">
+    <form method="post">
       <p> You have {{break}} minute(s) of break. </p>
       <h2> Your challenge: </h2>
       <p> {{activity}} </p>
       <button name="continue" type="submit" value="HTML"> continue </button>
-      <button name="reshuffle" type="submit" value="HTML"> reshuffle </button>
     </form>
+
+      <form action="/break" method="post">
+        <button type="submit" value="{{break}}" name="break"> reshuffle</button>
+      </form>
   </body>
 </html>
