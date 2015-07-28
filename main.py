@@ -42,7 +42,9 @@ class MainHandler(webapp2.RequestHandler):
         #creating user
         googleUser = users.get_current_user()
         userGoogleID = googleUser.user_id()
+        #if user in bank already DONT re add
         newUser = BreakUser(identity = userGoogleID)
+        newUser.put()
 
         template = jinja_environment.get_template('templates/dashboard.html')
         self.response.write(template.render())
@@ -56,25 +58,22 @@ class TimerHandler(webapp2.RequestHandler):
 
 
 
-        # newUser = BreakUser(studyTime = userStudyTime, breakTime = userBreakTime, identity = userGoogleID)
-        # newUserID = newUser.put()
-
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
 
         #finding the right user
         for indivUser in BreakUser.query().fetch():
-            currUser = users.get_current_user()
-            currID = currUser.user_id()
             if( indivUser.identity == currID):
                 #found user model created in main
                 indivUser.studyTime = int(self.request.get('timeToStudy'))
-                # indivUser.breakTime = int(self.request.get('timeToBreak'))
                 indivUser.put
+                userStudyTime = indivUser.studyTime
 
 
 
 
         #user variables   NEED TO ACCESS
-        userStudyTime = 90
+        # userStudyTime = 90
 
         #dictionary for jinja replacement
         templateVars = {
