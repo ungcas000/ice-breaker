@@ -22,6 +22,7 @@ from google.appengine.ext import ndb
 import random
 from random import choice
 import logging
+from google.appengine.api import urlfetch
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
@@ -57,7 +58,7 @@ class BreakHandler(webapp2.RequestHandler):
             activity_dict = ['Go for a run', 'Do Yoga', 'Attend a dance class']
             activity2_dict = ['Jumping Jacks', 'Push-ups', 'Plank']
 
-            if self.request.get('break') >= '20':
+            if self.request.get('break') >= '15':
                 return random.choice(activity_dict)
 
             else:
