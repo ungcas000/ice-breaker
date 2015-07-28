@@ -58,8 +58,6 @@ def CreateNewUser(currentUserID):
     logging.info("result of test is true")
     return True
 
-
-
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         #creates a user for the current user on the page
@@ -77,34 +75,37 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/dashboard.html')
         self.response.write(template.render())
 
-
+#this is the timer handler for AFTER THE STUDY PAGE
 class TimerHandler(webapp2.RequestHandler):
+    #fix this after testing
     def get(self):
         self.post()
 
     def post(self):
 
         logging.info("")
+
+        logging.info("enter TimerHandler")
         currUser = users.get_current_user()
         currID = currUser.user_id()
-
+        logging.info("current user id: %s", currID)
         #finding the right user
         for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
             if( indivUser.identity == currID):
                 #found user model created in main
+                logging.info("found correct database user")
                 indivUser.studyTime = int(self.request.get('timeToStudy'))
-                indivUser.put
-                userStudyTime = indivUser.studyTime
+                indivUser.put()
+                # userStudyTime = indivUser.studyTime
+                break
 
+        logging.info("updated user in database")
 
-
-
-        #user variables   NEED TO ACCESS
-        # userStudyTime = 90
 
         #dictionary for jinja replacement
         templateVars = {
-            'studyTime': userStudyTime,    #need to access current user data
+            'studyTime': indivUser.studyTime    #need to access current user data
         }
 
         template = jinja_environment.get_template('templates/timer.html')
@@ -165,20 +166,12 @@ class BreakHandler(webapp2.RequestHandler):
 
         self.response.write(template.render(break_vars))
 
-
+#this loads the study page and that allows the data to be fed to the timer
 class StartStudyingHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/startStudying.html')
         self.response.write(template.render())
 
-    #     #this is not needed b/c copied to the timer handler
-    # def post(self):
-    #     #store study time and break time into database
-    #     userStudyTime = int(self.request.get('timeToStudy'))
-    #     userBreakTime = int(self.request.get('timeToBreak'))
-    #
-    #     newUser = User(studyTime = userStudyTime, breakTime = userBreakTime)
-    #     newUserID = newUser.put()
 
 
 app = webapp2.WSGIApplication([
