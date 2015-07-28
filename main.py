@@ -26,12 +26,13 @@ from google.appengine.api import urlfetch
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-#This is the portion of the code that stores the ending time for the timer
-#may need to create a user model instead
-class Timer(ndb.Model):
-    hours = ndb.IntegerProperty(required = True)
-    minutes = ndb.IntegerProperty(required = True)
-    seconds = ndb.IntegerProperty(required = True)
+#This is the model that stores data for the user
+class User(ndb.Model):
+    endHours = ndb.IntegerProperty()
+    endMinutes = ndb.IntegerProperty()
+    endSeconds = ndb.IntegerProperty()
+    breakTime = ndb.IntegerProperty()
+    studyTime = ndb.IntegerProperty()
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -41,7 +42,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 
-class TimerTestHandler(webapp2.RequestHandler):
+class TimerHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/timer.html')
         self.response.write(template.render())
@@ -73,11 +74,15 @@ class BreakHandler(webapp2.RequestHandler):
         # self.response.write('<h1> Break the Ice </h1>' + '<br>' + 'You have ' + self.request.get('break') + ' minute(s).' + '<br>')
         # self.response.write(' <h2> Your challenge: </h2> ' + activity)
 
+class StartStudyingHandler(webapp2.RequestHandler):
+    def post(self):
+        template = jinja_environment.get_template('templates/startStudying.html')
 
-
+        self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/timer', TimerTestHandler),
+    ('/timer', TimerHandler),
     ('/break', BreakHandler),
+    ('/study', StartStudyingHandler)
 ], debug=True)
