@@ -2,14 +2,36 @@
 <html>
   <head>
     <title>Clock Test</title>
-    <script type="text/javascript" src="static/js/timer.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
   </head>
-  <body>
-    This is a test to see how the clock function works in JavaScript
+  <body >
+    <br>
+
+    How long? <input type="text" id="timeInterval"> minutes<br>
+    <input type='button' value='Enter' id="enterButton" />
+
+
+
+    <br>
+    <br>
+
+    Start Time<div id='startTime'></div>
+    End Time<div id='endTime'></div>
+    <br>
+    <br>
+    Current Time<div id='clock'></div>
+
+
+
+    <br>
+    <br>
+    Time Remaining<div id='timer'></div>
 
 
 
 
+
+    <script type="text/javascript" src="static/js/timer.js"></script>
   </body>
 </html>
