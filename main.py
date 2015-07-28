@@ -59,8 +59,8 @@ def CreateNewUser(currentUserID):
     logging.info("result of test is true")
     return True
 
-
-def SetEndTime(currentUserID, userDur):
+#use json??
+class SetEndTime(webapp2.RequestHandler):
     #updating time
     logging.info("entered SetEndTime function")
     time = datetime.datetime.now().time()
@@ -227,4 +227,5 @@ app = webapp2.WSGIApplication([
     ('/break', BreakHandler),
     ('/study', StartStudyingHandler),
     ('/breaktimer', BreaktimerHandler),
+    ('/logEndTime', SetEndTime),
 ], debug=True)

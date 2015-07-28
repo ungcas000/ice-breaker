@@ -76,7 +76,25 @@ function endTime(userDur){
   showEndTime(timeArray[1])
   // return timeArray[1]
 
+
+
   runTimer(timeArray[1])
+
+  //push end time back to python using ajax
+  $.ajax({
+    type:"POST",
+    url:"/logEndTime",
+    dataType: 'json',
+    data: JSON.stringify({
+      "hours": endTime[0],
+      "minutes": endTime[1],
+      "seconds": endTime[2]
+    })
+  })
+
+
+
+
 }
 
 
