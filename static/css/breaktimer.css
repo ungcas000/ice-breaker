@@ -34,8 +34,8 @@ h1 {
     width: 65%;
     height: 45%;
     margin: auto;
-    position: absolute;
-    top: 1250px; left: 0; bottom: 0; right: 0;
+    position: relative;
+    top: 48px; left: 0; bottom: 0; right: 0;
     text-align: center;
     text-transform: uppercase;
     font-size: 25px;
