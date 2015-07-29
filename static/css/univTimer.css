@@ -25,3 +25,56 @@
     color: rgb(224, 224, 224);
     text-align: center;
 }
+
+h1 {
+  width: 80%;
+  height: 10%;
+  font-size: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(10, 90, 140);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  margin: auto;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 2px 2px;
+
+}
+
+#current {
+    background: rgb(45, 140, 210);
+    width: 55%;
+    height: 15%;
+    margin: auto;
+    position: absolute;
+    top: 40px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 25px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    border: 1px solid white;
+    padding: 1em 1.6em;
+    border-radius: 10px;
+    line-height: 2em;
+}
+
+#remaining {
+  background: rgb(45, 140, 210);
+  width: 55%;
+  height: 15%;
+  margin: auto;
+  position: absolute;
+  left: 0; bottom: 10px; right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 25px;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  border: 1px solid white;
+  padding: 1em 1.6em;
+  border-radius: 10px;
+  line-height: 2em;
+
+}
