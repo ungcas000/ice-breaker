@@ -48,18 +48,18 @@
 .head {
     font-size: 60px;
     font-family: 'Lato', sans-serif;
-    color: rgb(40, 150, 240);
+    color: rgb(10, 90, 140);
     padding: 1em 1.6em;
     font-weight: 300;
 }
 
 #question {
   font-family: 'Lato', sans-serif;
-  color: rgb(40, 150, 240);
+  color: rgb(45, 140, 210)
 }
 
 .pure-button-primary {
-   background: rgb(40, 150, 240);
+   background: rgb(45, 140, 210);
    font-family: 'Noto Sans', sans-serif;
    font-weight: bold;
    color: white;

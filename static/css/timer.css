@@ -32,7 +32,7 @@ h1 {
 }
 
 .reference {
-    background: rgb(40, 150, 240);
+    background: rgb(45, 140, 210);
     width: 65%;
     height: 50%;
     margin: auto;
@@ -45,12 +45,12 @@ h1 {
     font-family: 'Quicksand', sans-serif;
     border: 1px solid white;
     padding: 1em 1.6em;
-    border-radius: 30px;
+    border-radius: 10px;
     line-height: 2em;
 }
 
 .doing-action {
-  background: rgb(40, 150, 240);
+  background: rgb(45, 140, 210);
   width: 65%;
   height: 25%;
   margin: auto;
@@ -63,7 +63,7 @@ h1 {
   font-family: 'Quicksand', sans-serif;
   border: 1px solid white;
   padding: 1em 1.6em;
-  border-radius: 30px;
+  border-radius: 10px;
   line-height: 2em;
 
 }
@@ -72,7 +72,7 @@ h1 {
    background: white;
    font-family: 'Noto Sans', sans-serif;
    font-weight: bold;
-   color: rgb(40, 150, 240);
+   color: rgb(45, 140, 210);
    padding: 1px 2em;
    border-radius: 5px;
    font-size: 120%;
