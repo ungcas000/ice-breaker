@@ -55,7 +55,11 @@
 
 #question {
   font-family: 'Lato', sans-serif;
+<<<<<<< HEAD
+  color: rgb(40, 150, 240);
+=======
   color: rgb(45, 140, 210)
+>>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
 }
 
 .pure-button-primary {

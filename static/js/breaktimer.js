@@ -82,7 +82,6 @@ function endTime(userDur){
   updateEndTime(timeArray[1])
 
 
-
 }
 
 /*
@@ -100,7 +99,8 @@ function updateEndTime(endTime){
     data: JSON.stringify({
       "hours": endTime[0],
       "minutes": endTime[1],
-      "seconds": endTime[2]
+      "seconds": endTime[2],
+      "status": 'breaking'
     })
   })
 }

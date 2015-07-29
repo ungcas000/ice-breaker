@@ -23,6 +23,7 @@ import random
 from random import choice
 import logging
 from google.appengine.api import urlfetch
+import datetime
 import json
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -35,7 +36,9 @@ class BreakUser(ndb.Model):
     endSeconds = ndb.IntegerProperty()
     breakTime = ndb.IntegerProperty()
     studyTime = ndb.IntegerProperty()
+    status = ndb.StringProperty()
     identity = ndb.StringProperty(required = True)
+    activity = ndb.StringProperty()
 
 #this test returns true if the current user is NOT in the database
 #it will return false if the user IS in the database
@@ -59,6 +62,9 @@ def CreateNewUser(currentUserID):
     logging.info("result of test is true")
     return True
 
+
+
+
 #using the ajax communication
 class SetEndTime(webapp2.RequestHandler):
     def post(self):
@@ -71,6 +77,7 @@ class SetEndTime(webapp2.RequestHandler):
         logging.info("hours: %s", data['hours'])
         logging.info("minutes: %s", data['minutes'])
         logging.info("seconds: %s", data['seconds'])
+        logging.info("status: %s", data['status'])
 
         currUser = users.get_current_user()
         currID = currUser.user_id()
@@ -84,11 +91,13 @@ class SetEndTime(webapp2.RequestHandler):
                 indivUser.endHours = data['hours']
                 indivUser.endMinutes = data['minutes']
                 indivUser.endSeconds = data['seconds']
+                indivUser.status = data['status']
                 indivUser.put()
                 break
 
         logging.info("updated user in database")
 
+#creates a page for the continuously running countdown clock
 class UniversalTimer(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/universalTimer.html')
@@ -112,10 +121,16 @@ class UniversalTimer(webapp2.RequestHandler):
 
         logging.info("end time array: %s", endArray)
         univTimerVars['endTimeArray'] = endArray
+        univTimerVars['status'] = indivUser.status
+
+        if(indivUser.status == "breaking"):
+            logging.info("user is breaking for %d minutes", indivUser.breakTime)
+            univTimerVars['duration'] = indivUser.breakTime
+        else:
+            logging.info("user is studying for %d minutes", indivUser.studyTime)
+            univTimerVars['duration'] = indivUser.studyTime
 
         self.response.write(template.render(univTimerVars))
-
-
 
 
 
@@ -156,9 +171,9 @@ class TimerHandler(webapp2.RequestHandler):
                 logging.info("found correct database user")
                 indivUser.studyTime = int(self.request.get('timeToStudy'))
                 indivUser.put()
-                # userStudyTime = indivUser.studyTime
                 break
 
+        logging.info("user study time is now %s", indivUser.studyTime)
         logging.info("updated user in database")
 
 
@@ -199,6 +214,24 @@ class BreaktimerHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/breaktimer.html')
         self.response.write(template.render(template2Vars))
 
+        # search_url = ('https://www.youtube.com/results?search_query=%s' +
+        #                   '&api_key=AIzaSyCRxiJ2RmC3ilCTe-6XG-undrs0uVs1RqM' +
+        #                   '&limit=10')
+        #
+        # search_term = self.request.get('activity')
+        # logging.info(search_term)
+        # search_term = search_term.replace(' ', '+')
+        # logging.info(search_term)
+        # logging.info(search_term)
+        # query_url = search_url % search_term
+        # url_fetch_response = urlfetch.fetch(query_url)
+        # json_string = url_fetch_response.content
+        # response_dict = json.loads(json_string)
+        # youtube_url= response_dict['data'][0]['videos']['original']['url']
+        # self.response.out.write(template.render({'url': youtube_url}))
+
+
+
 
 
 class BreakHandler(webapp2.RequestHandler):
@@ -220,12 +253,7 @@ class BreakHandler(webapp2.RequestHandler):
                 logging.info("found correct database user")
                 indivUser.breakTime = int(self.request.get('break'))
                 indivUser.put()
-                # userStudyTime = indivUser.studyTime
                 break
-
-        logging.info("updated user in database")
-
-
 
 
         #returns length of break and challenge
@@ -233,7 +261,7 @@ class BreakHandler(webapp2.RequestHandler):
             activity_dict = ['Go for a run', 'Do Yoga', 'Attend a dance class']
             activity2_dict = ['Jumping Jacks', 'Push-ups', 'Plank']
 
-            if self.request.get('break') >= '15':
+            if int(self.request.get('break')) >= 15:
                 return random.choice(activity_dict)
 
             else:
@@ -244,6 +272,7 @@ class BreakHandler(webapp2.RequestHandler):
         break_vars = {'break' : self.request.get('break'), 'activity' : activity}
 
         self.response.write(template.render(break_vars))
+
 
 #this loads the study page and that allows the data to be fed to the timer
 class StartStudyingHandler(webapp2.RequestHandler):
