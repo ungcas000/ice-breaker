@@ -81,6 +81,8 @@ function endTime(userDur){
 
 }
 
+<<<<<<< HEAD
+=======
 /*
 * the updateEndTime() function uses ajax to submit the current endTime
 * to the python handler that will update the datastore information
@@ -103,6 +105,7 @@ function updateEndTime(endTime){
 }
 
 
+>>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
 /* OBSOLETE
 * this JQuery function is now obsolete
 *
