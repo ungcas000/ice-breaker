@@ -120,9 +120,6 @@ def GenerateActivity(userTime):
         return random.choice(superLong)
 
 
-
-
-
 #using the ajax communication
 class SetEndTime(webapp2.RequestHandler):
     def post(self):
