@@ -289,6 +289,19 @@ class BreakHandler(webapp2.RequestHandler):
 
         self.response.write(template.render(break_vars))
 
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
+            if( indivUser.identity == currID):
+                #found user model created in main
+                logging.info("found correct database user")
+                indivUser.activity = activity
+                indivUser.put()
+                break
+
 
 #this loads the study page and that allows the data to be fed to the timer
 class StartStudyingHandler(webapp2.RequestHandler):
