@@ -35,6 +35,7 @@ class BreakUser(ndb.Model):
     endSeconds = ndb.IntegerProperty()
     breakTime = ndb.IntegerProperty()
     studyTime = ndb.IntegerProperty()
+    status = ndb.StringProperty()
     identity = ndb.StringProperty(required = True)
 
 #this test returns true if the current user is NOT in the database
@@ -71,6 +72,7 @@ class SetEndTime(webapp2.RequestHandler):
         logging.info("hours: %s", data['hours'])
         logging.info("minutes: %s", data['minutes'])
         logging.info("seconds: %s", data['seconds'])
+        logging.info("status: %s", data['status'])
 
         currUser = users.get_current_user()
         currID = currUser.user_id()
@@ -84,11 +86,13 @@ class SetEndTime(webapp2.RequestHandler):
                 indivUser.endHours = data['hours']
                 indivUser.endMinutes = data['minutes']
                 indivUser.endSeconds = data['seconds']
+                indivUser.status = data['status']
                 indivUser.put()
                 break
 
         logging.info("updated user in database")
 
+#creates a page for the continuously running countdown clock
 class UniversalTimer(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/universalTimer.html')
@@ -112,11 +116,16 @@ class UniversalTimer(webapp2.RequestHandler):
 
         logging.info("end time array: %s", endArray)
         univTimerVars['endTimeArray'] = endArray
+        univTimerVars['status'] = indivUser.status
+
+        if(indivUser.status == "breaking"):
+            logging.info("user is breaking for %d minutes", indivUser.breakTime)
+            univTimerVars['duration'] = indivUser.breakTime
+        else:
+            logging.info("user is studying for %d minutes", indivUser.studyTime)
+            univTimerVars['duration'] = indivUser.studyTime
 
         self.response.write(template.render(univTimerVars))
-
-
-
 
 
 
