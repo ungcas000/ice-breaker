@@ -18,7 +18,7 @@
         <a href="/" class="pure-menu-heading">IceBreaker</a>
           </a>
           <ul class="pure-menu-list">
-              <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
+              <li class="pure-menu-item"><a href="/univTimer" class="pure-menu-link">Current Countdown</a></li>
           </ul>
       </div>
 
@@ -27,16 +27,26 @@
 
       <div class="blurb">
         <form method="post">
-          <p> You have {{break}} minute(s) of break.</p>
-          <h2> Your challenge </h2>
-          <p> {{activity}} </p>
+          <p id="commitment"> You have {{break}} minute(s) of break.</p><br><br>
+          <h2 id="challenge"> Your challenge </h2>
+          <p id="activity"> {{activity}} </p>
         </form>
       </div>
+<br>
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
       <div class="pure-g">
         <div class="pure-u-1-2">
           <form action="/breaktimer" method="post">
-            <button name="continue" type="submit" value="{{break}}" class="pure-button pure-button-primary">Continue</button>
+            <button name="continue" type="submit" value="{{break}}" class="pure-button pure-button-primary" id="green">Continue</button>
 
           </form>
         </div>
@@ -44,7 +54,7 @@
       <br>
         <div class="pure-u-1-2">
             <form action="/break" method="post">
-              <button type="submit" value="{{break}}" name="break" class="pure-button pure-button-primary">Reshuffle</button>
+              <button type="submit" value="{{break}}" name="break" class="pure-button pure-button-primary" id="red">Reshuffle</button>
             </form>
         </div>
 

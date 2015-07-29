@@ -12,12 +12,14 @@
 
   </head>
   <body onload="endTime({{studyTime}})">
+
     <div class="pure-menu pure-menu-horizontal heading">
         <a href="/" class="pure-menu-heading">IceBreaker</a>
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
+          <li class="pure-menu-item"><a href="/univTimer" class="pure-menu-link">Current Countdown</a></li>
         </ul>
     </div>
+
     <div class="container">
 
     <br>
@@ -28,25 +30,24 @@
 
     <h1 class="intro">You want to study for {{studyTime}} min</h1>
 
+<br><br>
+
+    <div class="doing-action">
+      Time Remaining<div id='timer'></div>
+
+      <form action="/break" method="get">
+        <button name="continue" type="submit" class="pure-button pure-button-primary">Break</button>
+      </form>
+    </div>
     <br>
     <br>
       <div class="reference">
+        Current Time<div id='clock'></div>
+<br>
         Start Time<div id='startTime'></div>
         End Time<div id='endTime'></div>
-        <br>
-        Current Time<div id='clock'></div>
       </div>
 
-
-      <br>
-      <br>
-      <div class="doing-action">
-        Time Remaining<div id='timer'></div>
-
-        <form action="/break" method="get">
-          <button name="continue" type="submit" class="pure-button pure-button-primary">Break</button>
-        </form>
-      </div>
 
     </div>
 
