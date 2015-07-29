@@ -59,7 +59,7 @@ def CreateNewUser(currentUserID):
     logging.info("result of test is true")
     return True
 
-#use json??
+#using the ajax communication
 class SetEndTime(webapp2.RequestHandler):
     #updating time
     logging.info("entered SetEndTime function")
