@@ -25,6 +25,23 @@ import logging
 from google.appengine.api import urlfetch
 import datetime
 import json
+import urllib
+
+from google.appengine.ext import vendor
+
+vendor.add('lib')
+
+import simplejson
+
+import gdata.youtube
+import gdata.youtube.service
+
+yt_service = gdata.youtube.service.YouTubeService()
+
+# Turn on HTTPS/SSL access.
+# Note: SSL is not available at this time for uploads.
+yt_service.ssl = True
+
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
@@ -213,25 +230,6 @@ class BreaktimerHandler(webapp2.RequestHandler):
 
         template = jinja_environment.get_template('templates/breaktimer.html')
         self.response.write(template.render(template2Vars))
-
-        # search_url = ('https://www.youtube.com/results?search_query=%s' +
-        #                   '&api_key=AIzaSyCRxiJ2RmC3ilCTe-6XG-undrs0uVs1RqM' +
-        #                   '&limit=10')
-        #
-        # search_term = self.request.get('activity')
-        # logging.info(search_term)
-        # search_term = search_term.replace(' ', '+')
-        # logging.info(search_term)
-        # logging.info(search_term)
-        # query_url = search_url % search_term
-        # url_fetch_response = urlfetch.fetch(query_url)
-        # json_string = url_fetch_response.content
-        # response_dict = json.loads(json_string)
-        # youtube_url= response_dict['data'][0]['videos']['original']['url']
-        # self.response.out.write(template.render({'url': youtube_url}))
-
-
-
 
 
 class BreakHandler(webapp2.RequestHandler):
