@@ -183,6 +183,7 @@ class TimerHandler(webapp2.RequestHandler):
         logging.info("current user id: %s", currID)
         #finding the right user
         youUser = FindUser(currID)
+        logging.info("access study time of %s", self.request.get('timeToStudy'))
         youUser.studyTime = int(self.request.get('timeToStudy'))
         youUser.put()
         logging.info("*UPDATED* FOUND USER %s - STUDY FOR %s MINUTES", youUser.identity, youUser.studyTime)
