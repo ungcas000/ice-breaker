@@ -68,6 +68,11 @@ def FindUser(currUsID):
     #finding the right user
     return BreakUser.get_by_id(currUsID)
 
+
+
+#this function houses all of the lists that contain the activities
+#the passed param then goes to the conditional statements that return
+#a randomly generted activity in that range
 def GenerateActivity(userTime):
     #under 5
     quick = ['Sit Ups', 'Push-ups', 'Plank', 'Jumping Jacks', 'Stretch', 'Crazy Dancing', 'Burpees']
