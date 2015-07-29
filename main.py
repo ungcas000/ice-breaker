@@ -64,31 +64,6 @@ def CreateNewUser(currentUserID):
 
 
 
-def SetEndTime(currentUserID, userDur):
-    #updating time
-    logging.info("entered SetEndTime function")
-    time = datetime.datetime.now().time()
-    logging.info("testing time function: ", time)
-
-
-
-    # logging.info("enter SetEndTme function")
-    # currUser = users.get_current_user()
-    # currID = currUser.user_id()
-    # logging.info("current user id: %s", currID)
-    # #finding the right user
-    # for indivUser in BreakUser.query().fetch():
-    #     logging.info("looking for correct database user")
-    #     if( indivUser.identity == currID):
-    #         #found user model created in main
-    #         logging.info("found correct database user")
-    #         indivUser.studyTime = int(self.request.get('timeToStudy'))
-    #         indivUser.put()
-    #         # userStudyTime = indivUser.studyTime
-    #         break
-    #
-    # logging.info("updated user in database")
-
 
 #using the ajax communication
 class SetEndTime(webapp2.RequestHandler):
@@ -213,8 +188,8 @@ class TimerHandler(webapp2.RequestHandler):
         SetEndTime(indivUser.identity, indivUser.studyTime)
 
 class BreaktimerHandler(webapp2.RequestHandler):
-    # def get(self):
-    #     self.post()
+    def get(self):
+        self.post()
 
     def post(self):
         logging.info("enter breaktimerHandler")
