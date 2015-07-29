@@ -23,7 +23,7 @@ import random
 from random import choice
 import logging
 from google.appengine.api import urlfetch
-import datetime
+import json
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
@@ -59,31 +59,63 @@ def CreateNewUser(currentUserID):
     logging.info("result of test is true")
     return True
 
-
-def SetEndTime(currentUserID, userDur):
-    #updating time
-    logging.info("entered SetEndTime function")
-    time = datetime.datetime.now().time()
-    logging.info("testing time function: ", time)
-
+#using the ajax communication
+class SetEndTime(webapp2.RequestHandler):
+    def post(self):
+        #updating time
+        logging.info("entered SetEndTime function")
 
 
-    # logging.info("enter SetEndTme function")
-    # currUser = users.get_current_user()
-    # currID = currUser.user_id()
-    # logging.info("current user id: %s", currID)
-    # #finding the right user
-    # for indivUser in BreakUser.query().fetch():
-    #     logging.info("looking for correct database user")
-    #     if( indivUser.identity == currID):
-    #         #found user model created in main
-    #         logging.info("found correct database user")
-    #         indivUser.studyTime = int(self.request.get('timeToStudy'))
-    #         indivUser.put()
-    #         # userStudyTime = indivUser.studyTime
-    #         break
-    #
-    # logging.info("updated user in database")
+        data = json.loads(self.request.body)
+        logging.info("data request: %s", data)
+        logging.info("hours: %s", data['hours'])
+        logging.info("minutes: %s", data['minutes'])
+        logging.info("seconds: %s", data['seconds'])
+
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
+            if( indivUser.identity == currID):
+                #found user model created in main
+                logging.info("found correct database user")
+                indivUser.endHours = data['hours']
+                indivUser.endMinutes = data['minutes']
+                indivUser.endSeconds = data['seconds']
+                indivUser.put()
+                break
+
+        logging.info("updated user in database")
+
+class UniversalTimer(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/universalTimer.html')
+        univTimerVars = {}
+        endArray = []
+
+
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
+            if( indivUser.identity == currID):
+                #found user model created in main
+                logging.info("found correct database user")
+                endArray.append(indivUser.endHours)
+                endArray.append(indivUser.endMinutes)
+                endArray.append(indivUser.endSeconds)
+                break
+
+        logging.info("end time array: %s", endArray)
+        univTimerVars['endTimeArray'] = endArray
+
+        self.response.write(template.render(univTimerVars))
+
+
 
 
 
@@ -227,4 +259,6 @@ app = webapp2.WSGIApplication([
     ('/break', BreakHandler),
     ('/study', StartStudyingHandler),
     ('/breaktimer', BreaktimerHandler),
+    ('/logEndTime', SetEndTime),
+    ('/univTimer', UniversalTimer)
 ], debug=True)

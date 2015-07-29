@@ -76,8 +76,35 @@ function endTime(userDur){
   showEndTime(timeArray[1])
   // return timeArray[1]
 
+
+
   runTimer(timeArray[1])
+  updateEndTime(timeArray[1])
+
+
+
 }
+
+/*
+* the updateEndTime() function uses ajax to submit the current endTime
+* to the python handler that will update the datastore information
+*
+* precondition: the passed endTime array is accurate
+* postcondition: the data of the endtime array is passed to the handler
+*/
+function updateEndTime(endTime){
+  $.ajax({
+    type: "POST",
+    url: "/logEndTime",
+    dataType: 'json',
+    data: JSON.stringify({
+      "hours": endTime[0],
+      "minutes": endTime[1],
+      "seconds": endTime[2]
+    })
+  })
+}
+
 
 
 /* OBSOLETE
@@ -103,7 +130,7 @@ $("#enterButton").click(function(){
 * precondition: the correct end time is passed
 * postcondition: a countdown clock is displayed
 */
-function runTimer(endArray){
+function runTimer(endTime){
     timeLeft = []
     currentTime = startTime()
     clockVar = setInterval(function(){
@@ -124,8 +151,8 @@ function runTimer(endArray){
 
 
       //stopping function: if current time matches ending time
-      if (currentTime[1] == endArray[1]){
-        if (currentTime[0]==endArray[0] && currentTime[2]==endArray[2]){
+      if (currentTime[1] == endTime[1]){
+        if (currentTime[0]==endTime[0] && currentTime[2]==endTime[2]){
           clearInterval(clockVar)
           console.log(" enter clear")
         }
