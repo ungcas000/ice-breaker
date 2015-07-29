@@ -70,42 +70,43 @@ def FindUser(currUsID):
 
 def GenerateActivity(userTime):
     #under 5
-    underFive = ['Sit Ups', 'Push-ups', 'Plank', 'Jumping Jacks', 'Stretch', 'Crazy Dancing']
+    quick = ['Sit Ups', 'Push-ups', 'Plank', 'Jumping Jacks', 'Stretch', 'Crazy Dancing', 'Burpees']
 
-    #6-15
-    sixToFifteen = ['Stretch', 'Ab Workout', 'Yoga', 'Watch a TedTalk', 'Get a glass of water',
-        'Crazy Dancing', 'Read an article']
+    #5-15
+    shorter = ['Stretch', 'Ab Workout', 'Yoga', 'Watch a TedTalk', 'Get a glass of water',
+        'Crazy Dancing', 'Read an article', 'Go for a quick walk', 'Plank and Stretch']
 
-    #16-30
-    sixteenToThirty = ['Yoga', 'Watch a TedTalk', 'Go for a quick jog', 'Crazy Dancing',
+    #15-30
+    moderate = ['Yoga', 'Watch a TedTalk', 'Go for a quick jog', 'Crazy Dancing',
         'Go for a walk', 'Talk to a friend', 'Make yourself a healthy snack', 'Check the news', 'Do a crossword',
-        'Solve a Sudoku']
+        'Solve a Sudoku', 'Ab workout']
 
-    #over 31
-    overThirtyOne = ['Go for a walk', 'Go for a run', 'Phone a friend', 'Go take a picture of something outdoors',
-        'Make yourself a healthy snack', 'Check the news', 'Do a crossword', 'Solve a Sudoku']
+    #over 30
+    long = ['Go for a walk', 'Go for a run', 'Phone a friend', 'Go take a picture of something outdoors',
+        'Make yourself a healthy snack', 'Check the news', 'Do a crossword', 'Solve a Sudoku', 'Skype a friend']
 
+    #WAY over 31 (over 1.5 hours)
+    superLong = ['Bake some cookies', 'Go for a longer run', 'Go for a longer walk', 'Cook dinner',
+        'Research something completely random', 'Hang out with friends']
 
-    # #final dictionary
-    # activityDict = {"quick": underFive,
-    #     "shorter": sixToFifteen,
-    #     "moderate": sixteenToThirty,
-    #     "long":overThirtyOne}
 
     userTime = int(userTime)
     #random choice of activity
     if userTime < 5:
         #random choice in quick list
-        return random.choice(underFive)
+        return random.choice(quick)
     elif userTime < 16:
         #random choice in shorter list
-        return random.choice(sixToFifteen)
+        return random.choice(shorter)
     elif userTime < 31:
         #random choice in moderate list
-        return random.choice(sixteenToThirty)
-    else:
+        return random.choice(moderate)
+    elif userTime < 90:
         #random choice in long list
-        return random.choice(overThirtyOne)
+        return random.choice(long)
+    else:
+        #random choice in super long list
+        return random.choice(superLong)
 
 
 
@@ -276,19 +277,6 @@ class BreakHandler(webapp2.RequestHandler):
 
         userBreakLength = self.request.get('break')
         activity = GenerateActivity(userBreakLength)
-
-        #returns length of break and challenge
-        # def getActivity():
-        #     # activity_dict = ['Go for a run', 'Do Yoga', 'Attend a dance class']
-        #     # activity2_dict = ['Jumping Jacks', 'Push-ups', 'Plank']
-        #
-        #     # userBreakLength = self.request.get('break')
-        #
-        #     if int(self.request.get('break')) >= 15:
-        #         return random.choice(activity_dict)
-        #
-        #     else:
-        #         return random.choice(activity2_dict)
 
         # activity = getActivity()
         template = jinja_environment.get_template('templates/activity.html')
