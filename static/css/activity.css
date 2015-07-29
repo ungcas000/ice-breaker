@@ -35,7 +35,6 @@ h1 {
 }
 
 .pure-button-primary {
-   background: rgb(45, 140, 210);
    font-family: 'Noto Sans', sans-serif;
    font-weight: bold;
    color: white;
@@ -49,5 +48,35 @@ h1 {
   font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   color: rgb(45, 140, 210)
+}
 
+
+#challenge {
+  font-size: 45px;
+  color: rgb(0, 50, 110);
+}
+
+
+#activity {
+  font-size: 32px;
+  background: rgb(45, 140, 210);
+  border: 2px;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 50%;
+  margin: auto;
+
+}
+
+#red {
+  background: rgb(250, 50, 50);
+}
+
+#green {
+  background: rgb(40, 230, 90);
+}
+
+#commitment {
+  font-size: 17px;
 }
