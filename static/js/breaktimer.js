@@ -82,9 +82,6 @@ function endTime(userDur){
   updateEndTime(timeArray[1])
 
 
-<<<<<<< HEAD
-=======
-
 }
 
 /*
@@ -110,7 +107,6 @@ function updateEndTime(endTime){
 
 
 
->>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
 /* OBSOLETE
 * this JQuery function is now obsolete
 *
