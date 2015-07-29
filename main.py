@@ -36,7 +36,7 @@ class BreakUser(ndb.Model):
     breakTime = ndb.IntegerProperty()
     studyTime = ndb.IntegerProperty()
     status = ndb.StringProperty()
-    identity = ndb.StringProperty(required = True)
+    # identity = ndb.StringProperty(required = True)
     activity = ndb.StringProperty()
 
 #this test returns true if the current user is NOT in the database
@@ -47,7 +47,7 @@ def CreateNewUser(currentUserID):
     #create list of all registered users
     logging.info("generating a list of all known users")
     for indivUser in BreakUser.query().fetch():
-        tempID = indivUser.identity
+        tempID = indivUser.key.id()
         logging.info("adding known user %s to the list", tempID)
         allUserIDs.append(tempID)
     #compare current user to registered users to see if already registered
@@ -67,12 +67,15 @@ def FindUser(currUsID):
     logging.info("entered find user function")
     logging.info("current user id: %s", currUsID)
     #finding the right user
-    for indivUser in BreakUser.query().fetch():
-        logging.info("looking for correct database user")
-        if( indivUser.identity == currUsID):
-            #found user model created in main
-            logging.info("returning user")
-            return indivUser
+    return BreakUser.get_by_id(currUsID)
+
+
+    # for indivUser in BreakUser.query().fetch():
+    #     logging.info("looking for correct database user")
+    #     if( indivUser.identity == currUsID):
+    #         #found user model created in main
+    #         logging.info("returning user")
+    #         return indivUser
 
 
 #using the ajax communication
@@ -93,17 +96,25 @@ class SetEndTime(webapp2.RequestHandler):
         currID = currUser.user_id()
         logging.info("current user id: %s", currID)
         #finding the right user
-        for indivUser in BreakUser.query().fetch():
-            logging.info("looking for correct database user")
-            if( indivUser.identity == currID):
-                #found user model created in main
-                logging.info("found correct database user")
-                indivUser.endHours = data['hours']
-                indivUser.endMinutes = data['minutes']
-                indivUser.endSeconds = data['seconds']
-                indivUser.status = data['status']
-                indivUser.put()
-                break
+        youUser = FindUser(currID)
+        logging.info("found correct database user")
+        youUser.endHours = data['hours']
+        youUser.endMinutes = data['minutes']
+        youUser.endSeconds = data['seconds']
+        youUser.status = data['status']
+        youUser.put()
+
+        # for indivUser in BreakUser.query().fetch():
+        #     logging.info("looking for correct database user")
+        #     if( indivUser.identity == currID):
+        #         #found user model created in main
+        #         logging.info("found correct database user")
+        #         indivUser.endHours = data['hours']
+        #         indivUser.endMinutes = data['minutes']
+        #         indivUser.endSeconds = data['seconds']
+        #         indivUser.status = data['status']
+        #         indivUser.put()
+        #         break
 
         logging.info("updated user in database")
 
@@ -121,7 +132,7 @@ class UniversalTimer(webapp2.RequestHandler):
 
         #finding the right user
         youUser = FindUser(currID)
-        logging.info("FOUND USER %s AND IS %s", youUser.identity, youUser.status)
+        logging.info("FOUND USER %s AND IS %s", youUser.key.id(), youUser.status)
 
         endArray.append(youUser.endHours)
         endArray.append(youUser.endMinutes)
@@ -164,7 +175,7 @@ class MainHandler(webapp2.RequestHandler):
         userTest = CreateNewUser(userGoogleID)
         logging.info("result of CreateNewUser test for user %s is %s", userGoogleID, userTest)
         if(userTest):
-            newUser = BreakUser(identity = userGoogleID)
+            newUser = BreakUser(id = userGoogleID)
             newUser.put()
 
         template = jinja_environment.get_template('templates/dashboard.html')
@@ -173,8 +184,8 @@ class MainHandler(webapp2.RequestHandler):
 #this is the timer handler for AFTER THE STUDY PAGE
 class TimerHandler(webapp2.RequestHandler):
     #fix this after testing
-    def get(self):
-        self.post()
+    # def get(self):
+    #     self.post()
 
     def post(self):
         logging.info("enter TimerHandler")
@@ -185,9 +196,8 @@ class TimerHandler(webapp2.RequestHandler):
         youUser = FindUser(currID)
         logging.info("access study time of %s", self.request.get('timeToStudy'))
         youUser.studyTime = int(self.request.get('timeToStudy'))
-        # youUser.breakTime = 99
         youUser.put()
-        logging.info("*UPDATED* FOUND USER %s - STUDY FOR %s MINUTES", youUser.identity, youUser.studyTime)
+        logging.info("*UPDATED* FOUND USER %s - STUDY FOR %s MINUTES", youUser.key.id(), youUser.studyTime)
 
 
         # #uncomment for fixing the FindUser function
@@ -226,7 +236,7 @@ class BreaktimerHandler(webapp2.RequestHandler):
         currID = currUser.user_id()
         youUser = FindUser(currID)
 
-        logging.info("FOUND USER %s AND IS %s FOR %s MINUTES", youUser.identity, youUser.status, youUser.breakTime)
+        logging.info("FOUND USER %s AND IS %s FOR %s MINUTES", youUser.key.id(), youUser.status, youUser.breakTime)
 
         # #uncomment for fixing the FindUser function
         # currUser = users.get_current_user()
@@ -282,7 +292,7 @@ class BreakHandler(webapp2.RequestHandler):
         youUser = FindUser(currID)
         youUser.breakTime = int(self.request.get('break'))
         youUser.put()
-        logging.info("*UPDATED* FOUND USER %s - Break FOR %s MINUTES", youUser.identity, youUser.breakTime)
+        logging.info("*UPDATED* FOUND USER %s - Break FOR %s MINUTES", youUser.key.id(), youUser.breakTime)
 
 
         # #uncomment for fixing the FindUser function
@@ -321,7 +331,7 @@ class BreakHandler(webapp2.RequestHandler):
         youUser.activity = activity
         youUser.put()
 
-        logging.info("*UPDATED* FOUND USER %s - ACTIVITY IS %s", youUser.identity, youUser.activity)
+        logging.info("*UPDATED* FOUND USER %s - ACTIVITY IS %s", youUser.key.id(), youUser.activity)
 
         # #uncomment for fixing the FindUser function
         # for indivUser in BreakUser.query().fetch():
