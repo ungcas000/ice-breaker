@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../static/css/break.css">
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
 
     <title>Break</title>
   </head>
@@ -19,11 +20,20 @@
         </ul>
     </div>
 
-    <h1>Need a Break</h1>
-    <form class="pure-form" method = "post" action = "/break">
-      <p> How long do you want to break for?<br> <input type = "text" name = "break" class="pure-input-rounded" placeholder="Requires a time" required> </p>
-      <button class="pure-button pure-button-primary" name="randomize" type="submit" value="HTML">Randomize</button>
-    </form>
+    <div class="container">
+        <div class="screen">
+            <h1 class="head">Need a Break</h1>
+            <form class="pure-form" method = "post" action = "/break" id="question">
+              How long do you want to break for?
+              <div>
+                <br>
+                  <input type = "text" name = "break" class="pure-input-rounded" placeholder=" Type time in minutes" required>                </div><br>
+                  <button class="pure-button pure-button-primary" name="randomize" type="submit" value="HTML">Randomize</button>
+            </form>
+        </div>
+    </div>
+
+
 
     <div class="footer l-box">
         <p>
