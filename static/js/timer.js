@@ -77,6 +77,28 @@ function endTime(userDur){
   // return timeArray[1]
 
   runTimer(timeArray[1])
+  updateEndTime(timeArray[1])
+  
+}
+
+/*
+* the updateEndTime() function uses ajax to submit the current endTime
+* to the python handler that will update the datastore information
+*
+* precondition: the passed endTime array is accurate
+* postcondition: the data of the endtime array is passed to the handler
+*/
+function updateEndTime(endTime){
+  $.ajax({
+    type: "POST",
+    url: "/logEndTime",
+    dataType: 'json',
+    data: JSON.stringify({
+      "hours": endTime[0],
+      "minutes": endTime[1],
+      "seconds": endTime[2]
+    })
+  })
 }
 
 
