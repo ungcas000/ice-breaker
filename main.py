@@ -70,14 +70,6 @@ def FindUser(currUsID):
     return BreakUser.get_by_id(currUsID)
 
 
-    # for indivUser in BreakUser.query().fetch():
-    #     logging.info("looking for correct database user")
-    #     if( indivUser.identity == currUsID):
-    #         #found user model created in main
-    #         logging.info("returning user")
-    #         return indivUser
-
-
 #using the ajax communication
 class SetEndTime(webapp2.RequestHandler):
     def post(self):
@@ -104,17 +96,6 @@ class SetEndTime(webapp2.RequestHandler):
         youUser.status = data['status']
         youUser.put()
 
-        # for indivUser in BreakUser.query().fetch():
-        #     logging.info("looking for correct database user")
-        #     if( indivUser.identity == currID):
-        #         #found user model created in main
-        #         logging.info("found correct database user")
-        #         indivUser.endHours = data['hours']
-        #         indivUser.endMinutes = data['minutes']
-        #         indivUser.endSeconds = data['seconds']
-        #         indivUser.status = data['status']
-        #         indivUser.put()
-        #         break
 
         logging.info("updated user in database")
 
@@ -137,19 +118,6 @@ class UniversalTimer(webapp2.RequestHandler):
         endArray.append(youUser.endHours)
         endArray.append(youUser.endMinutes)
         endArray.append(youUser.endSeconds)
-
-
-
-        # #uncomment for fixing the FindUser function
-        # for indivUser in BreakUser.query().fetch():
-        #     logging.info("looking for correct database user")
-        #     if( indivUser.identity == currID):
-        #         #found user model created in main
-        #         logging.info("found correct database user")
-        #         endArray.append(indivUser.endHours)
-        #         endArray.append(indivUser.endMinutes)
-        #         endArray.append(indivUser.endSeconds)
-        #         break
 
         logging.info("end time array: %s", endArray)
         univTimerVars['endTimeArray'] = endArray
@@ -200,20 +168,6 @@ class TimerHandler(webapp2.RequestHandler):
         logging.info("*UPDATED* FOUND USER %s - STUDY FOR %s MINUTES", youUser.key.id(), youUser.studyTime)
 
 
-        # #uncomment for fixing the FindUser function
-        # for indivUser in BreakUser.query().fetch():
-        #     logging.info("looking for correct database user")
-        #     if( indivUser.identity == currID):
-        #         #found user model created in main
-        #         logging.info("found correct database user")
-        #         indivUser.studyTime = int(self.request.get('timeToStudy'))
-        #         indivUser.put()
-        #         break
-
-        # logging.info("user study time is now %s", indivUser.studyTime)
-        # logging.info("updated user in database")
-
-
         #dictionary for jinja replacement
         templateVars = {
             'studyTime': youUser.studyTime    #need to access current user data
@@ -222,7 +176,6 @@ class TimerHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/timer.html')
         self.response.write(template.render(templateVars))
 
-        # SetEndTime(youUser.identity, youUser.studyTime)
 
 class BreaktimerHandler(webapp2.RequestHandler):
     def get(self):
@@ -237,20 +190,6 @@ class BreaktimerHandler(webapp2.RequestHandler):
         youUser = FindUser(currID)
 
         logging.info("FOUND USER %s AND IS %s FOR %s MINUTES", youUser.key.id(), youUser.status, youUser.breakTime)
-
-        # #uncomment for fixing the FindUser function
-        # currUser = users.get_current_user()
-        # currID = currUser.user_id()
-        # logging.info("current user id: %s", currID)
-        # #finding the right user
-        # for indivUser in BreakUser.query().fetch():
-        #     logging.info("looking for correct database user")
-        #     if( indivUser.identity == currID):
-        #         #found user model created in main
-        #         logging.info("found correct database user")
-        #         breakTime = indivUser.breakTime
-        #         break
-
 
         #dictionary for jinja replacement
         template2Vars = {
@@ -295,16 +234,6 @@ class BreakHandler(webapp2.RequestHandler):
         logging.info("*UPDATED* FOUND USER %s - Break FOR %s MINUTES", youUser.key.id(), youUser.breakTime)
 
 
-        # #uncomment for fixing the FindUser function
-        # for indivUser in BreakUser.query().fetch():
-        #     logging.info("looking for correct database user")
-        #     if( indivUser.identity == currID):
-        #         #found user model created in main
-        #         logging.info("found correct database user")
-        #         indivUser.breakTime = int(self.request.get('break'))
-        #         indivUser.put()
-        #         break
-
 
         #returns length of break and challenge
         def getActivity():
@@ -333,15 +262,6 @@ class BreakHandler(webapp2.RequestHandler):
 
         logging.info("*UPDATED* FOUND USER %s - ACTIVITY IS %s", youUser.key.id(), youUser.activity)
 
-        # #uncomment for fixing the FindUser function
-        # for indivUser in BreakUser.query().fetch():
-        #     logging.info("looking for correct database user")
-        #     if( indivUser.identity == currID):
-        #         #found user model created in main
-        #         logging.info("found correct database user")
-        #         indivUser.activity = activity
-        #         indivUser.put()
-        #         break
 
 #this loads the study page and that allows the data to be fed to the timer
 class StartStudyingHandler(webapp2.RequestHandler):
