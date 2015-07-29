@@ -55,7 +55,7 @@ function runTimer(endTime){
       if (currentTime[1] == endTime[1]){
         if (currentTime[0]==endTime[0] && currentTime[2]==endTime[2]){
           //userAlert
-          alert("Time's Up!!")
+          alert("Time's Up!! \n\n You should move on now")
           clearInterval(clockVar)
           console.log(" enter clear")
         }
