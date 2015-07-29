@@ -32,11 +32,7 @@ h1 {
 }
 
 .reference {
-<<<<<<< HEAD
-    background: rgb(40, 150, 240);
-=======
     background: rgb(45, 140, 210);
->>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
     width: 65%;
     height: 50%;
     margin: auto;
@@ -49,20 +45,12 @@ h1 {
     font-family: 'Quicksand', sans-serif;
     border: 1px solid white;
     padding: 1em 1.6em;
-<<<<<<< HEAD
-    border-radius: 30px;
-=======
     border-radius: 10px;
->>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
     line-height: 2em;
 }
 
 .doing-action {
-<<<<<<< HEAD
-  background: rgb(40, 150, 240);
-=======
   background: rgb(45, 140, 210);
->>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
   width: 65%;
   height: 25%;
   margin: auto;
@@ -75,11 +63,7 @@ h1 {
   font-family: 'Quicksand', sans-serif;
   border: 1px solid white;
   padding: 1em 1.6em;
-<<<<<<< HEAD
-  border-radius: 30px;
-=======
   border-radius: 10px;
->>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
   line-height: 2em;
 
 }
@@ -88,11 +72,7 @@ h1 {
    background: white;
    font-family: 'Noto Sans', sans-serif;
    font-weight: bold;
-<<<<<<< HEAD
-   color: rgb(40, 150, 240);
-=======
    color: rgb(45, 140, 210);
->>>>>>> a83adbaaac52dd9b8e1fd335fc93e0197dab1299
    padding: 1px 2em;
    border-radius: 5px;
    font-size: 120%;

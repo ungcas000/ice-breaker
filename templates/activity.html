@@ -1,5 +1,4 @@
 <!-- this is the file for the html code for the activities page-->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,45 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../static/css/activity.css">
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
 
     <title> Activities </title>
   </head>
   <body>
+    <div class="container">
+      <div class="pure-menu pure-menu-horizontal heading">
+        <a href="/" class="pure-menu-heading">IceBreaker</a>
+          </a>
+          <ul class="pure-menu-list">
+              <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
+          </ul>
+      </div>
 
-    <div class="pure-menu pure-menu-horizontal heading">
-      <a href="/" class="pure-menu-heading">IceBreaker</a>
-        </a>
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
-        </ul>
-    </div>
 
-    <h1> Break the Ice </h1>
-    <form method="post">
-      <p> You have {{break}} minute(s) of break.</p>
-      <h2> Your challenge </h2>
-      <p> {{activity}} </p>
+        <h1> Break the Ice </h1>
 
-    </form>
-    <div class="pure-g">
-      <div class="pure-u-1-2">
-        <form action="/breaktimer" method="post">
-          <button name="continue" type="submit" value="{{break}}" class="pure-button pure-button-primary">continue</button>
-
+      <div class="blurb">
+        <form method="post">
+          <p> You have {{break}} minute(s) of break.</p>
+          <h2> Your challenge </h2>
+          <p> {{activity}} </p>
         </form>
       </div>
 
-    <br>
-      <div class="pure-u-1-2">
-          <form action="/break" method="post">
-            <button type="submit" value="{{break}}" name="break" class="pure-button pure-button-primary">reshuffle</button>
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <form action="/breaktimer" method="post">
+            <button name="continue" type="submit" value="{{break}}" class="pure-button pure-button-primary">Continue</button>
+
           </form>
+        </div>
+
+      <br>
+        <div class="pure-u-1-2">
+            <form action="/break" method="post">
+              <button type="submit" value="{{break}}" name="break" class="pure-button pure-button-primary">Reshuffle</button>
+            </form>
+        </div>
+
       </div>
     </div>
-      <div class="footer l-box">
-          <p>
-              Created for Google CSSI.
-          </p>
-      </div>
+
   </body>
 </html>
