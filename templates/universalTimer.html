@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="../static/css/univTimer.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+
 
     <title>Countdown</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -21,18 +23,14 @@
           <li class="pure-menu-item"><a href="/univTimer" class="pure-menu-link">Current Countdown</a></li>
         </ul>
     </div>
+<br>
+<br>
+     <h1>You are {{status}} for {{duration}} minutes</h1>
 
-    <br>
-     <h1>You are {{status}} for {{duration}} minutes<h1>
-     <br>
-     <br>
-      <h2>Current Time<div id='clock'></div><h2>
-
+      <h2 id="current">Current Time<div id='clock'></div></h2>
 
 
-    <br>
-    <br>
-    <h2>Time Remaining<div id='timer'></div><h2>
+    <h2 id="remaining">Time Remaining<div id='timer'></div></h2>
 
 
 
