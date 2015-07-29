@@ -166,6 +166,7 @@ class TimerHandler(webapp2.RequestHandler):
                 indivUser.studyTime = int(self.request.get('timeToStudy'))
                 indivUser.put()
                 break
+
         logging.info("user study time is now %s", indivUser.studyTime)
         logging.info("updated user in database")
 
@@ -228,7 +229,6 @@ class BreakHandler(webapp2.RequestHandler):
                 logging.info("found correct database user")
                 indivUser.breakTime = int(self.request.get('break'))
                 indivUser.put()
-                # userStudyTime = indivUser.studyTime
                 break
 
         logging.info("updated user in database")
