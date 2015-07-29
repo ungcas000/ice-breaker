@@ -123,6 +123,28 @@ $("#enterButton").click(function(){
   runTimer(endArray)
 })
 
+
+
+function shouldStop(currentTime, endTime){
+  if(currentTime[1] == endTime[1]){
+    if(currentTime[0] == endTime[0] && currentTime[2] == endTime[2]){
+      return true
+    }
+  }
+  if(currentTime[0] > endTime[0]){
+    return true
+  }
+  if(currentTime[0] == endTime[0]){
+    if(currentTime[1] > endTime[1]){
+      return true
+    }
+    else if (currentTime[1] == endTime[1] && currentTime[2] > endTime[2]){
+      return true
+    }
+  }
+
+}
+
 /*
 * the runTimer() function uses array representation of the ending time to create a
 * countdown clock
@@ -135,6 +157,15 @@ function runTimer(endTime){
     currentTime = startTime()
     clockVar = setInterval(function(){
       currentTime = startTime()
+
+      //stopping function
+      if (shouldStop(currentTime, endTime)) {
+        console.log(" enter clear")
+        alert("Time's Up!! \n\nYou should move on now.")
+        clearInterval(clockVar)
+      }
+
+
       document.getElementById('clock').innerHTML = currentTime[0]+":"+currentTime[1]+":"+currentTime[2]
 
       //find time remaining
@@ -150,16 +181,16 @@ function runTimer(endTime){
       document.getElementById('timer').innerHTML = timeLeft[0]+":"+timeLeft[1]+":"+timeLeft[2]
 
 
-      //stopping function: if current time matches ending time
-      if (currentTime[1] == endTime[1]){
-        if (currentTime[0]==endTime[0] && currentTime[2]==endTime[2]){
-          //userAlert
-          alert("Time's Up!! \n\nYou should move on now")
-          clearInterval(clockVar)
-          console.log(" enter clear")
-        }
-
-      }
+      // //stopping function: if current time matches ending time
+      // if (currentTime[1] == endTime[1]){
+      //   if (currentTime[0]==endTime[0] && currentTime[2]==endTime[2]){
+      //     //userAlert
+      //     alert("Time's Up!! \n\nYou should move on now")
+      //     clearInterval(clockVar)
+      //     console.log(" enter clear")
+      //   }
+      //
+      // }
     },1000)
 }
 
