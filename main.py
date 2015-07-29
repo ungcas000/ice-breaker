@@ -36,6 +36,7 @@ class BreakUser(ndb.Model):
     endSeconds = ndb.IntegerProperty()
     breakTime = ndb.IntegerProperty()
     studyTime = ndb.IntegerProperty()
+    status = ndb.StringProperty()
     identity = ndb.StringProperty(required = True)
     activity = ndb.StringProperty()
 
@@ -62,6 +63,7 @@ def CreateNewUser(currentUserID):
     return True
 
 
+
 def SetEndTime(currentUserID, userDur):
     #updating time
     logging.info("entered SetEndTime function")
@@ -86,6 +88,74 @@ def SetEndTime(currentUserID, userDur):
     #         break
     #
     # logging.info("updated user in database")
+
+
+#using the ajax communication
+class SetEndTime(webapp2.RequestHandler):
+    def post(self):
+        #updating time
+        logging.info("entered SetEndTime function")
+
+
+        data = json.loads(self.request.body)
+        logging.info("data request: %s", data)
+        logging.info("hours: %s", data['hours'])
+        logging.info("minutes: %s", data['minutes'])
+        logging.info("seconds: %s", data['seconds'])
+        logging.info("status: %s", data['status'])
+
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
+            if( indivUser.identity == currID):
+                #found user model created in main
+                logging.info("found correct database user")
+                indivUser.endHours = data['hours']
+                indivUser.endMinutes = data['minutes']
+                indivUser.endSeconds = data['seconds']
+                indivUser.status = data['status']
+                indivUser.put()
+                break
+
+        logging.info("updated user in database")
+
+#creates a page for the continuously running countdown clock
+class UniversalTimer(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/universalTimer.html')
+        univTimerVars = {}
+        endArray = []
+
+
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
+            if( indivUser.identity == currID):
+                #found user model created in main
+                logging.info("found correct database user")
+                endArray.append(indivUser.endHours)
+                endArray.append(indivUser.endMinutes)
+                endArray.append(indivUser.endSeconds)
+                break
+
+        logging.info("end time array: %s", endArray)
+        univTimerVars['endTimeArray'] = endArray
+        univTimerVars['status'] = indivUser.status
+
+        if(indivUser.status == "breaking"):
+            logging.info("user is breaking for %d minutes", indivUser.breakTime)
+            univTimerVars['duration'] = indivUser.breakTime
+        else:
+            logging.info("user is studying for %d minutes", indivUser.studyTime)
+            univTimerVars['duration'] = indivUser.studyTime
+
+        self.response.write(template.render(univTimerVars))
 
 
 
@@ -244,4 +314,6 @@ app = webapp2.WSGIApplication([
     ('/break', BreakHandler),
     ('/study', StartStudyingHandler),
     ('/breaktimer', BreaktimerHandler),
+    ('/logEndTime', SetEndTime),
+    ('/univTimer', UniversalTimer)
 ], debug=True)

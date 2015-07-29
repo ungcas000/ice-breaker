@@ -13,7 +13,8 @@
   <body>
 
     <div class="pure-menu pure-menu-horizontal heading">
-        <a href="/" class="pure-menu-heading">IceBreaker</a>
+      <a href="/" class="pure-menu-heading">IceBreaker</a>
+        </a>
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hello {{user}}</a></li>
         </ul>
@@ -21,21 +22,26 @@
 
     <h1> Break the Ice </h1>
     <form method="post">
-      <p> You have {{break}} minute(s) of break. </p>
-      <h2> Your challenge: </h2>
+      <p> You have {{break}} minute(s) of break.</p>
+      <h2> Your challenge </h2>
       <p> {{activity}} </p>
 
     </form>
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <form action="/breaktimer" method="post">
+          <button name="continue" type="submit" value="{{break}}" class="pure-button pure-button-primary">continue</button>
 
-    <form action="/breaktimer" method="post">
-      <button name="continue" type="submit" value="{{break}}" class="pure-button pure-button-primary">continue</button>
+        </form>
+      </div>
 
-    </form>
-<br>
-      <form action="/break" method="post">
-        <button type="submit" value="{{break}}" name="break" class="pure-button pure-button-primary"> reshuffle</button>
-      </form>
-
+    <br>
+      <div class="pure-u-1-2">
+          <form action="/break" method="post">
+            <button type="submit" value="{{break}}" name="break" class="pure-button pure-button-primary">reshuffle</button>
+          </form>
+      </div>
+    </div>
       <div class="footer l-box">
           <p>
               Created for Google CSSI.
