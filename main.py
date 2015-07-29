@@ -62,6 +62,22 @@ def CreateNewUser(currentUserID):
     logging.info("result of test is true")
     return True
 
+#this function finds the correct user in the database and
+#returns that user
+def FindUser(currentUserID):
+    logging.info("entered find user function")
+    currUser = users.get_current_user()
+    currID = currUser.user_id()
+    logging.info("current user id: %s", currID)
+    #finding the right user
+    for indivUser in BreakUser.query().fetch():
+        logging.info("looking for correct database user")
+        if( indivUser.identity == currID):
+            #found user model created in main
+            return indivUser
+
+    logging.info("updated user in database")
+
 
 
 
