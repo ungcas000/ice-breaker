@@ -103,7 +103,7 @@ $("#enterButton").click(function(){
 * precondition: the correct end time is passed
 * postcondition: a countdown clock is displayed
 */
-function runTimer(endArray){
+function runTimer(endTime){
     timeLeft = []
     currentTime = startTime()
     clockVar = setInterval(function(){
@@ -124,8 +124,8 @@ function runTimer(endArray){
 
 
       //stopping function: if current time matches ending time
-      if (currentTime[1] == endArray[1]){
-        if (currentTime[0]==endArray[0] && currentTime[2]==endArray[2]){
+      if (currentTime[1] == endTime[1]){
+        if (currentTime[0]==endTime[0] && currentTime[2]==endTime[2]){
           clearInterval(clockVar)
           console.log(" enter clear")
         }
