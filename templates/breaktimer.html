@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/breaktimer.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+
     <title>Clock</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </head>
   <body onload="endTime({{breakTime}})">
+    <div class="pure-menu pure-menu-horizontal heading">
+        <a href="/" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/univTimer" class="pure-menu-link">Current Countdown</a></li>
+        </ul>
+    </div>
     <br>
 
 
     <br>
     <br>
-    You want to break for {{breakTime}} minutes
+    <h1>You want to break for {{breakTime}} minutes</h1>
 
     <br>
     <br>
 
-    Start Time<div id='startTime'></div>
-    End Time<div id='endTime'></div>
-    <br>
-    <br>
-    Current Time<div id='clock'></div>
 
 
+    <div class="doing-action">
 
-    <br>
-    <br>
     Time Remaining<div id='timer'></div>
 
-    <!-- <form action="/break" method="get">
-      <button name="continue" type="submit">break</button>
-    </form> -->
 
-    <!-- <form method="post">
-      <br>
-      <iframe width="420" height="345" src="{{url}}"></iframe> -->
-      <script type="text/javascript" src="static/js/breaktimer.js"></script>
-  </form>
+      <iframe id="video" width="420" height="345"
+        src="http://www.youtube.com/embed/{{id}}">
+      </iframe>
+<br>
+      <form action="/study" method="get">
+        <button name="continue" type="submit" class="pure-button pure-button-primary">Continue Studying</button>
+      </form>
+    </div>
+
+    <div class="reference">
+      Current Time<div id='clock'></div>
+<br>
+      Start Time<div id='startTime'></div>
+      End Time<div id='endTime'></div>
+    </div>
+    <br>
+
+
+
+
+
+    <script type="text/javascript" src="static/js/breaktimer.js"></script>
+
   </body>
 </html>
 

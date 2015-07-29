@@ -149,11 +149,12 @@ function runTimer(endTime){
       //stopping function: if current time matches ending time
       if (currentTime[1] == endTime[1]){
         if (currentTime[0]==endTime[0] && currentTime[2]==endTime[2]){
+          console.log(" enter clear")
+
+          //userAlert
+          alert("Time's Up!! \n\nYou should move on now.")
           clearInterval(clockVar)
           console.log(" enter clear")
-          //userAlert
-          alert("Time's Up!!")
-
         }
 
       }
