@@ -75,24 +75,30 @@ def FindUser(currUsID):
 #a randomly generted activity in that range
 def GenerateActivity(userTime):
     #under 5
-    quick = ['Sit Ups', 'Push-ups', 'Plank', 'Jumping Jacks', 'Stretch', 'Crazy Dancing', 'Burpees']
+    quick = ['Sit Ups', 'Push-ups', 'Plank', 'Jumping Jacks', 'Stretch', 'Crazy Dancing', 'Burpees',
+        'Meditate', 'Doodle', 'Look out a window', 'Listen to an old pop song', 'Breath deeply']
 
     #5-15
     shorter = ['Stretch', 'Ab Workout', 'Yoga', 'Watch a TedTalk', 'Get a glass of water',
-        'Crazy Dancing', 'Read an article', 'Go for a quick walk', 'Plank and Stretch']
+        'Crazy Dancing', 'Read an article', 'Go for a quick walk', 'Plank and Stretch', 'Meditate',
+        'Doodle', 'Color outside of the lines', 'Tidy up']
 
     #15-30
     moderate = ['Yoga', 'Watch a TedTalk', 'Go for a quick jog', 'Crazy Dancing',
         'Go for a walk', 'Talk to a friend', 'Make yourself a healthy snack', 'Check the news', 'Do a crossword',
-        'Solve a Sudoku', 'Ab workout']
+        'Solve a Sudoku', 'Ab workout', 'Walk outside', 'Tidy up', 'Write your friend a letter', 'Make a cup of tea',
+        'Make a cup of hot cocoa']
 
     #over 30
     long = ['Go for a walk', 'Go for a run', 'Phone a friend', 'Go take a picture of something outdoors',
-        'Make yourself a healthy snack', 'Check the news', 'Do a crossword', 'Solve a Sudoku', 'Skype a friend']
+        'Make yourself a healthy snack', 'Check the news', 'Do a crossword', 'Solve a Sudoku', 'Skype a friend',
+        'Take a quick shower', 'Walk outside', 'Plan a party', 'Hit the gym', 'Take a pilates class',
+        'Go to the cafe with a friend', 'Explore the local library', 'Make a healthy meal']
 
     #WAY over 31 (over 1.5 hours)
     superLong = ['Bake some cookies', 'Go for a longer run', 'Go for a longer walk', 'Cook dinner',
-        'Research something completely random', 'Hang out with friends']
+        'Research something completely random', 'Hang out with friends', 'Read a good book', 'Explore your town',
+        'Go bowling']
 
 
     userTime = int(userTime)
