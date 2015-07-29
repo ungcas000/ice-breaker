@@ -25,6 +25,11 @@ import logging
 from google.appengine.api import urlfetch
 import json
 import urllib
+import urllib2
+import urlparse
+from urlparse import urlparse
+import re
+
 
 from google.appengine.ext import vendor
 
@@ -263,8 +268,19 @@ class BreaktimerHandler(webapp2.RequestHandler):
             'breakTime': youUser.breakTime,    #need to access current user data
         }
 
+        # query_string = urllib.urlencode({"search_query": youUser.activity})
+        # html_content = urllib2.urlopen("http://www.youtube.com/results?" + query_string)
+        # search_results = re.findall(r'href=\"\/watch\?v=(.{11})', html_content.read().decode())
+        # , {'url': 'http://www.youtube.com/watch?v=' + search_results[0]}
+
         template = jinja_environment.get_template('templates/breaktimer.html')
         self.response.write(template.render(template2Vars))
+
+
+
+
+
+
 
 
 class BreakHandler(webapp2.RequestHandler):
