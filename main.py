@@ -62,6 +62,22 @@ def CreateNewUser(currentUserID):
     logging.info("result of test is true")
     return True
 
+#this function finds the correct user in the database and
+#returns that user
+def FindUser(currentUserID):
+    logging.info("entered find user function")
+    currUser = users.get_current_user()
+    currID = currUser.user_id()
+    logging.info("current user id: %s", currID)
+    #finding the right user
+    for indivUser in BreakUser.query().fetch():
+        logging.info("looking for correct database user")
+        if( indivUser.identity == currID):
+            #found user model created in main
+            return indivUser
+
+    logging.info("updated user in database")
+
 
 
 
@@ -272,6 +288,19 @@ class BreakHandler(webapp2.RequestHandler):
         break_vars = {'break' : self.request.get('break'), 'activity' : activity}
 
         self.response.write(template.render(break_vars))
+
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+        #finding the right user
+        for indivUser in BreakUser.query().fetch():
+            logging.info("looking for correct database user")
+            if( indivUser.identity == currID):
+                #found user model created in main
+                logging.info("found correct database user")
+                indivUser.activity = activity
+                indivUser.put()
+                break
 
 
 #this loads the study page and that allows the data to be fed to the timer
