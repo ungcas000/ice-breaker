@@ -36,7 +36,6 @@ class BreakUser(ndb.Model):
     breakTime = ndb.IntegerProperty()
     studyTime = ndb.IntegerProperty()
     status = ndb.StringProperty()
-    # identity = ndb.StringProperty(required = True)
     activity = ndb.StringProperty()
 
 #this test returns true if the current user is NOT in the database
