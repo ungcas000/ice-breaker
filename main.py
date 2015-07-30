@@ -251,8 +251,8 @@ class TimerHandler(webapp2.RequestHandler):
 
 
 class BreaktimerHandler(webapp2.RequestHandler):
-    def get(self):
-        self.post()
+    # def get(self):
+    #     self.post()
 
     def post(self):
         logging.info("enter breaktimerHandler")
