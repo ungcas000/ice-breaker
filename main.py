@@ -364,7 +364,7 @@ class VideoHandler(webapp2.RequestHandler):
             videoPageVars['duration'] = youUser.studyTime
 
         self.response.write(template.render(videoPageVars))
-        self.response.write('hello')
+        
 
     def post(self):
         logging.info("enter breaktimerHandler")
