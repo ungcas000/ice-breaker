@@ -268,18 +268,18 @@ class BreaktimerHandler(webapp2.RequestHandler):
             'breakTime': youUser.breakTime,    #need to access current user data
         }
 
-        query_string = urllib.urlencode({"search_query": str(youUser.breakTime) + "minute exercise"})
-        html_content_url = urllib2.urlopen("http://www.youtube.com/results?" + query_string)
-        search_expression = r'href=\"\/watch\?v=(.{11})'
-        raw_content = html_content_url.read()
-        decoded_content = raw_content.decode('utf-8')
-        #logging.info("searching this content:\n%s", raw_content)
-        #content_to_search = urllib.quote(decoded_content)
-        search_results = re.findall(search_expression, decoded_content)
-        logging.info("search_results: %s", search_results)
-
-
-        template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[0]})
+        # query_string = urllib.urlencode({"search_query": str(youUser.breakTime) + "minute exercise"})
+        # html_content_url = urllib2.urlopen("http://www.youtube.com/results?" + query_string)
+        # search_expression = r'href=\"\/watch\?v=(.{11})'
+        # raw_content = html_content_url.read()
+        # decoded_content = raw_content.decode('utf-8')
+        # #logging.info("searching this content:\n%s", raw_content)
+        # #content_to_search = urllib.quote(decoded_content)
+        # search_results = re.findall(search_expression, decoded_content)
+        # logging.info("search_results: %s", search_results)
+        #
+        #
+        # template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[0]})
         template = jinja_environment.get_template('templates/breaktimer.html')
         self.response.write(template.render(template2Vars))
 
