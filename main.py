@@ -31,23 +31,6 @@ import urlparse
 from urlparse import urlparse
 import re
 
-
-from google.appengine.ext import vendor
-
-vendor.add('lib')
-
-import simplejson
-
-import gdata.youtube
-import gdata.youtube.service
-
-yt_service = gdata.youtube.service.YouTubeService()
-
-# Turn on HTTPS/SSL access.
-# Note: SSL is not available at this time for uploads.
-yt_service.ssl = True
-
-
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 
