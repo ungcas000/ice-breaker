@@ -31,23 +31,6 @@ import urlparse
 from urlparse import urlparse
 import re
 
-
-from google.appengine.ext import vendor
-
-vendor.add('lib')
-
-import simplejson
-
-import gdata.youtube
-import gdata.youtube.service
-
-yt_service = gdata.youtube.service.YouTubeService()
-
-# Turn on HTTPS/SSL access.
-# Note: SSL is not available at this time for uploads.
-yt_service.ssl = True
-
-
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 
@@ -99,10 +82,10 @@ def FindUser(currUsID):
 def GenerateActivity(userTime):
     #under 5
     quick = ['Sit Ups', 'Push-ups', 'Plank', 'Jumping Jacks', 'Stretch', 'Crazy Dancing', 'Burpees',
-        'Meditate', 'Doodle', 'Look out a window', 'Listen to an old pop song', 'Breath deeply']
+        'Meditate', 'Doodle', 'Look out a window', 'Listen to an old pop song', 'Breath deeply', 'Get a glass of water',]
 
     #5-15
-    shorter = ['Stretch', 'Ab Workout', 'Yoga', 'Watch a TedTalk', 'Get a glass of water',
+    shorter = ['Stretch', 'Ab Workout', 'Yoga', 'Watch a TedTalk',
         'Crazy Dancing', 'Read an article', 'Go for a quick walk', 'Plank and Stretch', 'Meditate',
         'Doodle', 'Color outside of the lines', 'Tidy up']
 
@@ -240,10 +223,16 @@ class TimerHandler(webapp2.RequestHandler):
         youUser.put()
         logging.info("*UPDATED* FOUND USER %s - STUDY FOR %s MINUTES", youUser.key.id(), youUser.studyTime)
 
+        def time():
+            if youUser.studyTime == 1:
+                return 'minute'
+            else:
+                return 'minutes'
 
         #dictionary for jinja replacement
         templateVars = {
-            'studyTime': youUser.studyTime    #need to access current user data
+            'studyTime': youUser.studyTime,
+            'time': time(),    #need to access current user data
         }
 
         template = jinja_environment.get_template('templates/timer.html')
@@ -264,9 +253,16 @@ class BreaktimerHandler(webapp2.RequestHandler):
 
         logging.info("FOUND USER %s AND IS %s FOR %s MINUTES", youUser.key.id(), youUser.status, youUser.breakTime)
 
+        def time():
+            if youUser.breakTime == 1:
+                return 'minute'
+            else:
+                return 'minutes'
+
         #dictionary for jinja replacement
         template2Vars = {
-            'breakTime': youUser.breakTime,    #need to access current user data
+            'breakTime': youUser.breakTime,
+            'time': time(),   #need to access current user data
         }
 
         # query_string = urllib.urlencode({"search_query": str(youUser.breakTime) + "minute exercise"})
@@ -311,9 +307,18 @@ class BreakHandler(webapp2.RequestHandler):
         userBreakLength = self.request.get('break')
         activity = GenerateActivity(userBreakLength)
 
+        def time():
+            if youUser.breakTime == 1:
+                return 'minute'
+            else:
+                return 'minutes'
+
         # activity = getActivity()
         template = jinja_environment.get_template('templates/activity.html')
-        break_vars = {'break' : userBreakLength, 'activity' : activity}
+        break_vars = {'break' : userBreakLength,
+                      'activity' : activity,
+                      'time': time()
+                      }
 
         self.response.write(template.render(break_vars))
 
@@ -407,8 +412,14 @@ class VideoHandler(webapp2.RequestHandler):
         #dictionary for jinja replacement
         template2Vars['breakTime'] =  youUser.breakTime    #need to access current user data
 
+        def time():
+            if youUser.breakTime == 1:
+                return 'minute'
+            else:
+                return 'minutes'
 
-        query_string = urllib.urlencode({"search_query": str(youUser.breakTime) + "minute exercise"})
+
+        query_string = urllib.urlencode({"search_query": str(youUser.breakTime) + "minute workout"})
         html_content_url = urllib2.urlopen("http://www.youtube.com/results?" + query_string)
         search_expression = r'href=\"\/watch\?v=(.{11})'
         raw_content = html_content_url.read()
@@ -420,6 +431,7 @@ class VideoHandler(webapp2.RequestHandler):
         video_shuffle = randint(0, 5)
 
         template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[video_shuffle]})
+        template2Vars.update({'time': time()})
         template = jinja_environment.get_template('templates/videoPage.html')
         self.response.write(template.render(template2Vars))
 
