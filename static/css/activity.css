@@ -71,10 +71,16 @@ h1 {
 
 #red {
   background: rgb(250, 50, 50);
+  margin:0 auto;
+  display:block;
+
 }
 
 #green {
   background: rgb(40, 230, 90);
+  margin:0 auto;
+  display:block;
+
 }
 
 #commitment {
@@ -83,5 +89,6 @@ h1 {
 
 #workout {
   margin:0 auto;
-      display:block;
+  display:block;
+  
 }
