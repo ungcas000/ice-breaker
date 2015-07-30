@@ -326,6 +326,38 @@ class StartStudyingHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/startStudying.html')
         self.response.write(template.render())
 
+class VideoHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/videoPage.html')
+        videoPageVars = {}
+        endArray = []
+
+
+        currUser = users.get_current_user()
+        currID = currUser.user_id()
+        logging.info("current user id: %s", currID)
+
+        #finding the right user
+        youUser = FindUser(currID)
+        logging.info("FOUND USER %s AND IS %s", youUser.key.id(), youUser.status)
+
+        endArray.append(youUser.endHours)
+        endArray.append(youUser.endMinutes)
+        endArray.append(youUser.endSeconds)
+
+        logging.info("end time array: %s", endArray)
+        videoPageVars['endTimeArray'] = endArray
+        videoPageVars['status'] = youUser.status
+
+        if(youUser.status == "breaking"):
+            logging.info("user is breaking for %d minutes", youUser.breakTime)
+            videoPageVars['duration'] = youUser.breakTime
+        else:
+            logging.info("user is studying for %d minutes", youUser.studyTime)
+            videoPageVars['duration'] = youUser.studyTime
+
+        self.response.write(template.render(videoPageVars))
+
 
 
 app = webapp2.WSGIApplication([
@@ -335,5 +367,6 @@ app = webapp2.WSGIApplication([
     ('/study', StartStudyingHandler),
     ('/breaktimer', BreaktimerHandler),
     ('/logEndTime', SetEndTime),
-    ('/univTimer', UniversalTimer)
+    ('/univTimer', UniversalTimer),
+    ('/video', VideoHandler)
 ], debug=True)
