@@ -334,6 +334,10 @@ class StartStudyingHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/startStudying.html')
         self.response.write(template.render())
 
+    def post(self):
+        template = jinja_environment.get_template('templates/startStudying.html')
+        self.response.write(template.render())
+
 class VideoHandler(webapp2.RequestHandler):
     # def get(self):
         # template = jinja_environment.get_template('templates/videoPage.html')
