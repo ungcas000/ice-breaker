@@ -80,3 +80,10 @@ h1 {
 #commitment {
   font-size: 17px;
 }
+
+#workout {
+  text-align: center;
+  position: relative;
+  top: 20px; left: 578px; bottom: 10px; right: 500px;
+
+}
