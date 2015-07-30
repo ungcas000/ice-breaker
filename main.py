@@ -21,6 +21,7 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 import random
 from random import choice
+from random import randint
 import logging
 from google.appengine.api import urlfetch
 import json
@@ -397,11 +398,7 @@ class VideoHandler(webapp2.RequestHandler):
             logging.info("user is studying for %d minutes", youUser.studyTime)
             template2Vars['duration'] = youUser.studyTime
 
-        # currUser = users.get_current_user()
-        # currID = currUser.user_id()
-        # youUser = FindUser(currID)
-        #
-        logging.info("FOUND USER %s AND IS %s FOR %s MINUTES", youUser.key.id(), youUser.status, youUser.breakTime)
+
 
         #dictionary for jinja replacement
         template2Vars['breakTime'] =  youUser.breakTime    #need to access current user data
@@ -416,9 +413,9 @@ class VideoHandler(webapp2.RequestHandler):
         #content_to_search = urllib.quote(decoded_content)
         search_results = re.findall(search_expression, decoded_content)
         logging.info("search_results: %s", search_results)
+        video_shuffle = randint(0, 5)
 
-
-        template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[0]})
+        template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[video_shuffle]})
         template = jinja_environment.get_template('templates/videoPage.html')
         self.response.write(template.render(template2Vars))
 
