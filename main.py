@@ -330,7 +330,7 @@ class BreakHandler(webapp2.RequestHandler):
 
 #this loads the study page and that allows the data to be fed to the timer
 class StartStudyingHandler(webapp2.RequestHandler):
-    def post(self):
+    def get(self):
         template = jinja_environment.get_template('templates/startStudying.html')
         self.response.write(template.render())
 
