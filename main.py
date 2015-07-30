@@ -21,6 +21,7 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 import random
 from random import choice
+from random import randint
 import logging
 from google.appengine.api import urlfetch
 import json
@@ -364,7 +365,7 @@ class VideoHandler(webapp2.RequestHandler):
             videoPageVars['duration'] = youUser.studyTime
 
         self.response.write(template.render(videoPageVars))
-        
+
 
     def post(self):
         logging.info("enter breaktimerHandler")
@@ -390,9 +391,9 @@ class VideoHandler(webapp2.RequestHandler):
         #content_to_search = urllib.quote(decoded_content)
         search_results = re.findall(search_expression, decoded_content)
         logging.info("search_results: %s", search_results)
+        video_shuffle = randint(0, 5)
 
-
-        template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[0]})
+        template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[video_shuffle]})
         template = jinja_environment.get_template('templates/videoPage.html')
         self.response.write(template.render(template2Vars))
 
