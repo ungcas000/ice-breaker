@@ -11,7 +11,7 @@
     background-size: cover;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/dashboard_book.jpg', sizingMethod='scale');
 
-    height: 350px;
+    height: 380px;
     width: 100%;
     margin-bottom: 3em;
     display: table;
@@ -22,21 +22,21 @@
     vertical-align: middle;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 0;
-    font-size: 4em;
+    font-size: 5em;
     color: white;
     font-weight: 500;
-    text-shadow: 0 2px 2px black;
+    text-shadow: 0 3px 8px black;
 }
 
 .banner-mini {
     display: block;
     vertical-align: middle;
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: 0; 
-    font-size: 3em;
+    margin-bottom: 0;
+    font-size: 4em;
     color: white;
     font-weight: 500;
-    text-shadow: 0 2px 2px black;
+    text-shadow: 0 3px 8px black;
 }
 
 .activity-header {
