@@ -64,7 +64,7 @@ function runTimer(endTime){
         console.log(" enter clear")
         alert("Time's Up!! \n\nYou should move on now.")
         clearInterval(clockVar)
-      }      
+      }
 
 
       document.getElementById('clock').innerHTML = currentTime[0]+":"+currentTime[1]+":"+currentTime[2]
