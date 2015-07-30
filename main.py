@@ -375,10 +375,15 @@ class VideoHandler(webapp2.RequestHandler):
 
         # self.response.write(template.render(videoPageVars))
 
+    # def get(self):
+    #     template = jinja_environment.get_template('templates/videoPage.html')
+    #     self.response.write(template.render())
 
     def post(self):
+
+
         logging.info("enter videoHandler")
-        template = jinja_environment.get_template('templates/videoPage.html')
+        # template = jinja_environment.get_template('templates/videoPage.html')
         template2Vars = {}
         # endArray = []
 
@@ -398,17 +403,17 @@ class VideoHandler(webapp2.RequestHandler):
         #
         # logging.info("end time array: %s", endArray)
         # template2Vars['endTimeArray'] = endArray
-        template2Vars['status'] = youUser.status
+        # template2Vars['status'] = youUser.status
 
-        if(youUser.status == "breaking"):
-            logging.info("user is breaking for %d minutes", youUser.breakTime)
-            template2Vars['duration'] = youUser.breakTime
-        else:
-            logging.info("user is studying for %d minutes", youUser.studyTime)
-            template2Vars['duration'] = youUser.studyTime
+        # if(youUser.status == "breaking"):
+        #     logging.info("user is breaking for %d minutes", youUser.breakTime)
+        #     template2Vars['duration'] = youUser.breakTime
+        # else:
+        #     logging.info("user is studying for %d minutes", youUser.studyTime)
+        #     template2Vars['duration'] = youUser.studyTime
+        #
 
-
-
+        logging.info("time to break: %s", youUser.breakTime)
         #dictionary for jinja replacement
         template2Vars['breakTime'] =  youUser.breakTime    #need to access current user data
 
@@ -432,6 +437,8 @@ class VideoHandler(webapp2.RequestHandler):
 
         template2Vars.update({'url': 'http://www.youtube.com/embed/' + search_results[video_shuffle]})
         template2Vars.update({'time': time()})
+
+
         template = jinja_environment.get_template('templates/videoPage.html')
         self.response.write(template.render(template2Vars))
 

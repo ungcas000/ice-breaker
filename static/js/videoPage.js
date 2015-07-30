@@ -39,7 +39,7 @@ function endTime(userDur){
   timeArray[0] = starting
   endTime = starting
   console.log("Duration: ",userDur)
-  showStartTime(timeArray[0])
+  // showStartTime(timeArray[0])
 
   //the desired duration is over one hour
   if (userDur > 60){
@@ -73,7 +73,7 @@ function endTime(userDur){
     }
     timeArray[1] = endTime
   }
-  showEndTime(timeArray[1])
+  // showEndTime(timeArray[1])
   // return timeArray[1]
 
 
@@ -166,7 +166,7 @@ function runTimer(endTime){
       }
 
 
-      document.getElementById('clock').innerHTML = currentTime[0]+":"+currentTime[1]+":"+currentTime[2]
+      // document.getElementById('clock').innerHTML = currentTime[0]+":"+currentTime[1]+":"+currentTime[2]
 
       //find time remaining
       for (i=2; i > -1; i--){
@@ -178,7 +178,7 @@ function runTimer(endTime){
           timeLeft[i] = endTime[i] - currentTime[i]
         }
       }
-      document.getElementById('timer').innerHTML = timeLeft[0]+":"+timeLeft[1]+":"+timeLeft[2]
+      // document.getElementById('timer').innerHTML = timeLeft[0]+":"+timeLeft[1]+":"+timeLeft[2]
 
 
       // //stopping function: if current time matches ending time
@@ -198,9 +198,9 @@ function runTimer(endTime){
 
 
 
-function showStartTime(currentTimer){
-  document.getElementById('startTime').innerHTML = currentTimer[0]+":"+currentTimer[1]+":"+currentTimer[2];
-}
-function showEndTime(currentTimer){
-  document.getElementById('endTime').innerHTML = currentTimer[0]+":"+currentTimer[1]+":"+currentTimer[2];
-}
+// function showStartTime(currentTimer){
+//   document.getElementById('startTime').innerHTML = currentTimer[0]+":"+currentTimer[1]+":"+currentTimer[2];
+// }
+// function showEndTime(currentTimer){
+//   document.getElementById('endTime').innerHTML = currentTimer[0]+":"+currentTimer[1]+":"+currentTimer[2];
+// }
