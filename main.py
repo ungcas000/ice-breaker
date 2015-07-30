@@ -334,10 +334,43 @@ class StartStudyingHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 class VideoHandler(webapp2.RequestHandler):
-    def get(self):
+    # def get(self):
+        # template = jinja_environment.get_template('templates/videoPage.html')
+        # videoPageVars = {}
+        # endArray = []
+        #
+        #
+        # currUser = users.get_current_user()
+        # currID = currUser.user_id()
+        # logging.info("current user id: %s", currID)
+        #
+        # #finding the right user
+        # youUser = FindUser(currID)
+        # logging.info("FOUND USER %s AND IS %s", youUser.key.id(), youUser.status)
+        #
+        # endArray.append(youUser.endHours)
+        # endArray.append(youUser.endMinutes)
+        # endArray.append(youUser.endSeconds)
+        #
+        # logging.info("end time array: %s", endArray)
+        # videoPageVars['endTimeArray'] = endArray
+        # videoPageVars['status'] = youUser.status
+        #
+        # if(youUser.status == "breaking"):
+        #     logging.info("user is breaking for %d minutes", youUser.breakTime)
+        #     videoPageVars['duration'] = youUser.breakTime
+        # else:
+        #     logging.info("user is studying for %d minutes", youUser.studyTime)
+        #     videoPageVars['duration'] = youUser.studyTime
+
+        # self.response.write(template.render(videoPageVars))
+
+
+    def post(self):
+        logging.info("enter videoHandler")
         template = jinja_environment.get_template('templates/videoPage.html')
-        videoPageVars = {}
-        endArray = []
+        template2Vars = {}
+        # endArray = []
 
 
         currUser = users.get_current_user()
@@ -348,38 +381,31 @@ class VideoHandler(webapp2.RequestHandler):
         youUser = FindUser(currID)
         logging.info("FOUND USER %s AND IS %s", youUser.key.id(), youUser.status)
 
-        endArray.append(youUser.endHours)
-        endArray.append(youUser.endMinutes)
-        endArray.append(youUser.endSeconds)
-
-        logging.info("end time array: %s", endArray)
-        videoPageVars['endTimeArray'] = endArray
-        videoPageVars['status'] = youUser.status
+        # endArray.append(youUser.endHours)
+        # endArray.append(youUser.endMinutes)
+        # endArray.append(youUser.endSeconds)
+        #
+        #
+        # logging.info("end time array: %s", endArray)
+        # template2Vars['endTimeArray'] = endArray
+        template2Vars['status'] = youUser.status
 
         if(youUser.status == "breaking"):
             logging.info("user is breaking for %d minutes", youUser.breakTime)
-            videoPageVars['duration'] = youUser.breakTime
+            template2Vars['duration'] = youUser.breakTime
         else:
             logging.info("user is studying for %d minutes", youUser.studyTime)
-            videoPageVars['duration'] = youUser.studyTime
+            template2Vars['duration'] = youUser.studyTime
 
-        self.response.write(template.render(videoPageVars))
-        
-
-    def post(self):
-        logging.info("enter breaktimerHandler")
-
-
-        currUser = users.get_current_user()
-        currID = currUser.user_id()
-        youUser = FindUser(currID)
-
+        # currUser = users.get_current_user()
+        # currID = currUser.user_id()
+        # youUser = FindUser(currID)
+        #
         logging.info("FOUND USER %s AND IS %s FOR %s MINUTES", youUser.key.id(), youUser.status, youUser.breakTime)
 
         #dictionary for jinja replacement
-        template2Vars = {
-            'breakTime': youUser.breakTime,    #need to access current user data
-        }
+        template2Vars['breakTime'] =  youUser.breakTime    #need to access current user data
+
 
         query_string = urllib.urlencode({"search_query": str(youUser.breakTime) + "minute exercise"})
         html_content_url = urllib2.urlopen("http://www.youtube.com/results?" + query_string)
