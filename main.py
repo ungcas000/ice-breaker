@@ -282,11 +282,6 @@ class BreaktimerHandler(webapp2.RequestHandler):
 
 
 
-
-
-
-
-
 class BreakHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/break.html')
@@ -442,7 +437,10 @@ class VideoHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/videoPage.html')
         self.response.write(template.render(template2Vars))
 
-
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/about.html')
+        self.response.write(template.render())
 
 
 
@@ -456,5 +454,6 @@ app = webapp2.WSGIApplication([
     ('/breaktimer', BreaktimerHandler),
     ('/logEndTime', SetEndTime),
     ('/univTimer', UniversalTimer),
-    ('/video', VideoHandler)
+    ('/video', VideoHandler),
+    ('/about', AboutHandler)
 ], debug=True)
