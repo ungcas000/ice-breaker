@@ -321,7 +321,7 @@ class BreakHandler(webapp2.RequestHandler):
         currID = currUser.user_id()
         logging.info("current user id: %s", currID)
         #finding the right user
-        youUser = FindUser(currID)
+        # youUser = FindUser(currID)
         youUser.activity = activity
         youUser.put()
 
