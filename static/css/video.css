@@ -1,0 +1,45 @@
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.pure-menu-heading {
+  color: rgb(224, 224, 224);
+}
+
+.pure-menu-link {
+  color: rgb(224, 224, 224);
+}
+
+.heading {
+  background: rgb(0, 75, 150);
+  color: rgb(224, 224, 244);
+}
+
+h1 {
+    font-size: 60px;
+    font-family: 'Lato', sans-serif;
+    color: rgb(10, 90, 140);
+    font-weight: 100;
+    top: 100px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.pure-button-primary {
+   font-family: 'Noto Sans', sans-serif;
+   font-weight: bold;
+   color: white;
+   padding: 0.5em 2em;
+   border-radius: 5px;
+   font-size: 120%;
+   margin:15px auto;
+   display:block;
+}
+
+
+#video {
+  display: block;
+  position: relative;
+  margin: 0px auto;
+
+}
