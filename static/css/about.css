@@ -31,7 +31,7 @@ li p {
 .main-pos {
   margin-left: 2em !important;
   z-index: 3000;
-  /*background-image: url('http://dl.dropbox.com/u/32649907/imgs/shadow.png');*/
+  background-image: url(../images/rewardPeak.jpg);
 }
 
 .left-pos {
