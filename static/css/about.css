@@ -1,7 +1,35 @@
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.pure-menu-heading {
+  color: rgb(224, 224, 224);
+}
+
+.pure-menu-link {
+  color: rgb(224, 224, 224);
+}
+
+.heading {
+  background: rgb(0, 75, 150);
+  color: rgb(224, 224, 244);
+}
+
+.l-box {
+    padding: 0.5em 2em;
+    margin-top: 3em;
+}
+
+.footer {
+    background: rgb(0, 75, 150);
+    color: rgb(224, 224, 224);
+    text-align: center;
+}
+
 section {
   width: 40em;
   height: 25em;
-  margin: 0 auto;
+  margin: 150px auto;
   position: relative;
 }
 
@@ -16,7 +44,7 @@ li {
   overflow: hidden;
 }
 
-li p {
+#about {
   color: white;
   font-weight: bold;
   font-size: 5em;
@@ -31,7 +59,6 @@ li p {
 .main-pos {
   margin-left: 2em !important;
   z-index: 3000;
-  background-image: url(../images/rewardPeak.jpg);
 }
 
 .left-pos {
@@ -71,7 +98,52 @@ span {
 li p {
   color: white;
   font-weight: bold;
-  font-size: 5em;
+  font-size: 1em;
   text-align: center;
   margin-top: 1.175em;
+}
+
+#ice {
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 1.175em;
+  padding-left: .5em; padding-right: .5em;
+}
+
+h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  margin: auto;
+  padding: 1em;
+}
+
+.summary {
+  background-image: url(../images/iceberg.jpg);
+}
+
+.aboot {
+  background-image: url(../images/rewardPeak.jpg);
+}
+
+.jenna {
+  background-image: url(../images/view.jpg);
+  font-family: font-family: 'Quicksand', sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.cass {
+  background-image: url(../images/ATT_UTAustinExterior.jpg);
+  font-family: font-family: 'Quicksand', sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+.chris {
+  background-image: url(../images/chris.png);
+  font-family: font-family: 'Quicksand', sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
