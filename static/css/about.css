@@ -66,3 +66,12 @@ span {
   left: 17em;
   top: 20em;
 }
+
+
+li p {
+  color: white;
+  font-weight: bold;
+  font-size: 5em;
+  text-align: center;
+  margin-top: 1.175em;
+}
