@@ -261,6 +261,7 @@ class BreaktimerHandler(webapp2.RequestHandler):
 
         #dictionary for jinja replacement
         template2Vars = {
+            'activity': youUser.activity,
             'breakTime': youUser.breakTime,
             'time': time(),   #need to access current user data
         }
