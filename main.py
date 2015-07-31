@@ -87,7 +87,7 @@ def GenerateActivity(userTime):
     #5-15
     shorter = ['Stretch', 'Ab Workout', 'Yoga', 'Watch a TedTalk',
         'Crazy Dancing', 'Read an article', 'Go for a quick walk', 'Plank and Stretch', 'Meditate',
-        'Doodle', 'Color outside of the lines', 'Tidy up']
+        'Doodle', 'Color outside the lines', 'Tidy up']
 
     #15-30
     moderate = ['Yoga', 'Watch a TedTalk', 'Go for a quick jog', 'Crazy Dancing',
