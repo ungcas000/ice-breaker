@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/startStudying.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
+<title>Start Studying</title>
+  </head>
+  <body>
+
+    <div class="pure-menu pure-menu-horizontal heading">
+        <a href="/" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/univTimer" class="pure-menu-link">Current Countdown</a></li>
+        </ul>
+    </div>
+
+
+
+    <div class="container">
+        <div class="screen">
+            <h1 class="head">Start Studying</h1>
+            <form id="question" class="pure-form" method="post" action="/timer">
+              How long do you want to study for?
+              <div>
+                <br>
+                <input name="timeToStudy" class="pure-input-rounded" placeholder="Enter time in minutes" required></input>
+                </div><br>
+              <div class="submit-button">
+                <input class="pure-button pure-button-primary" type="submit" value="Submit">
+              </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="footer l-box">
+        <p>
+            Created for <a href="#">Google CSSI.</a>
+        </p>
+    </div>
+  </body>
+</html>

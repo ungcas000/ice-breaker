@@ -1,0 +1,69 @@
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.pure-menu-heading {
+  color: rgb(224, 224, 224);
+}
+
+.pure-menu-link {
+  color: rgb(224, 224, 224);
+}
+
+.heading {
+  background: rgb(0, 75, 150);
+  color: rgb(224, 224, 244);
+}
+
+.l-box {
+    padding: 0.5em 2em;
+    margin-top: 3em;
+}
+
+.footer {
+    background: rgb(0, 75, 150);
+    color: rgb(224, 224, 224);
+    text-align: center;
+}
+
+.container {
+    background: white;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+.screen {
+    width: 80%;
+    height: 90%;
+    margin: auto;
+    position: absolute;
+    top: 100px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.head {
+    font-size: 60px;
+    font-family: 'Lato', sans-serif;
+    color: rgb(10, 90, 140);
+    padding: 1em 1.6em;
+    font-weight: 300;
+}
+
+#question {
+  font-family: 'Lato', sans-serif;
+  color: rgb(45, 140, 210)
+}
+
+.pure-button-primary {
+   background: rgb(45, 140, 210);
+   font-family: 'Noto Sans', sans-serif;
+   font-weight: bold;
+   color: white;
+   padding: 0.5em 2em;
+   border-radius: 5px;
+   font-size: 120%;
+}

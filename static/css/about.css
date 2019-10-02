@@ -1,0 +1,149 @@
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.pure-menu-heading {
+  color: rgb(224, 224, 224);
+}
+
+.pure-menu-link {
+  color: rgb(224, 224, 224);
+}
+
+.heading {
+  background: rgb(0, 75, 150);
+  color: rgb(224, 224, 244);
+}
+
+.l-box {
+    padding: 0.5em 2em;
+    margin-top: 3em;
+}
+
+.footer {
+    background: rgb(0, 75, 150);
+    color: rgb(224, 224, 224);
+    text-align: center;
+}
+
+section {
+  width: 40em;
+  height: 25em;
+  margin: 150px auto;
+  position: relative;
+}
+
+li {
+  width: 500px;
+  height: 281px;
+  background: #333;
+  display: inline-block;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+}
+
+#about {
+  color: white;
+  font-weight: bold;
+  font-size: 5em;
+  text-align: center;
+  margin-top: 1.175em;
+}
+
+.items {
+  position: absolute;
+}
+
+.main-pos {
+  margin-left: 2em !important;
+  z-index: 3000;
+}
+
+.left-pos {
+  opacity: .3;
+  margin-left: -17em !important;
+  z-index: 1000;
+  -webkit-transform: scale(.75);
+  -moz-transform: scale(.75);
+  transform: scale(.75);
+}
+
+.back-pos {
+  margin-left: 2em !important;
+  opacity: .05;
+  -webkit-transform: scale(.5);
+  -moz-transform: scale(.5);
+  transform: scale(.5);
+}
+
+.right-pos {
+  opacity: .3;
+  margin-left:  21em !important;
+  z-index: 1000;
+  -webkit-transform: scale(.75);
+  -moz-transform: scale(.75);
+  transform: scale(.75);
+}
+
+span {
+  position: relative;
+  margin: 0 auto;
+  left: 17em;
+  top: 20em;
+}
+
+
+li p {
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  margin-top: 1.175em;
+}
+
+#ice {
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 1.175em;
+  padding-left: .5em; padding-right: .5em;
+}
+
+h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  margin: auto;
+  padding: 1em;
+}
+
+.summary {
+  background-image: url(../images/iceberg.jpg);
+}
+
+.aboot {
+  background-image: url(../images/rewardPeak.jpg);
+}
+
+.jenna {
+  background-image: url(../images/view.jpg);
+  font-family: font-family: 'Quicksand', sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.cass {
+  background-image: url(../images/ATT_UTAustinExterior.jpg);
+  font-family: font-family: 'Quicksand', sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+.chris {
+  background-image: url(../images/chris.png);
+  font-family: font-family: 'Quicksand', sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

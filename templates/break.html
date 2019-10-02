@@ -1,0 +1,51 @@
+<!-- this is the file for the html code for the break page -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/break.css">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
+
+    <title>Break</title>
+  </head>
+  <!-- <body onload="endTime({{breakTime}})"> -->
+  <body>
+
+
+    <div class="pure-menu pure-menu-horizontal heading">
+        <a href="/" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/univTimer" class="pure-menu-link">Current Countdown</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="screen">
+            <h1 class="head">Need a Break</h1>
+            <form class="pure-form" method = "post" action = "/break" id="question">
+              How long do you want to break for?
+              <div>
+                <br>
+                  <input type = "text" name = "break" class="pure-input-rounded" placeholder="Enter time in minutes" required>
+              </div><br>
+
+                  <button class="pure-button pure-button-primary" name="randomize" type="submit" value="HTML">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="footer l-box">
+        <p>
+            Created for Google CSSI.
+        </p>
+    </div>
+  <!--  <script type="text/javascript" src="static/js/videoPage.js"></script> -->
+  </body>
+</html>

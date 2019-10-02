@@ -1,0 +1,94 @@
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.pure-menu-heading {
+  color: rgb(224, 224, 224);
+}
+
+.pure-menu-link {
+  color: rgb(224, 224, 224);
+}
+
+.heading {
+  background: rgb(0, 75, 150);
+  color: rgb(224, 224, 244);
+}
+
+.pure-u-1-2 {
+    margin-top: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1em;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+    font-family: 'Lato', sans-serif;
+    color: rgb(10, 90, 140);
+    font-weight: 100;
+    top: 100px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.pure-button-primary {
+   font-family: 'Noto Sans', sans-serif;
+   font-weight: bold;
+   color: white;
+   padding: 0.5em 2em;
+   border-radius: 5px;
+   font-size: 120%;
+}
+
+.blurb {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  color: rgb(45, 140, 210)
+}
+
+
+#challenge {
+  font-size: 45px;
+  color: rgb(0, 50, 110);
+}
+
+
+#activity {
+  font-size: 32px;
+  background: rgb(45, 140, 210);
+  border: 2px;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 50%;
+  margin: auto;
+
+}
+
+#red {
+  background: rgb(250, 50, 50);
+  margin:0 auto;
+  display:block;
+
+}
+
+#green {
+  background: rgb(40, 230, 90);
+  margin:0 auto;
+  display:block;
+
+}
+
+#commitment {
+  font-size: 17px;
+}
+
+#workout {
+  margin:0 auto;
+  display:block;
+  
+}

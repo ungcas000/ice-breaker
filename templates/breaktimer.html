@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/breaktimer.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+
+    <title>Clock</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  </head>
+  <body onload="endTime({{breakTime}})">
+    <div class="pure-menu pure-menu-horizontal heading">
+        <a href="/" class="pure-menu-heading">IceBreaker</a>
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/univTimer" class="pure-menu-link">Current Countdown</a></li>
+        </ul>
+    </div>
+    <br>
+
+
+    <br>
+    <br>
+
+
+      <!-- Changing heading for version 1 -->
+    <!-- <h1>You are breaking for {{breakTime}} {{time}}</h1> -->
+      <h1> {{activity}} for {{breakTime}} {{time}} </h1>
+      <!-- Changing heading for version 1 -->
+
+    <br>
+    <br>
+
+
+
+    <div class="doing-action">
+
+    Time Remaining<div id='timer'></div>
+
+
+      <!-- <iframe id="video" width="420" height="345"
+        src="{{url}}">
+      </iframe> -->
+    <br>
+      <form action="/study" method="post">
+        <button name="continue" type="submit" class="pure-button pure-button-primary">Continue Studying</button>
+      </form>
+    </div>
+
+    <div class="reference">
+      Current Time<div id='clock'></div>
+<br>
+      Start Time<div id='startTime'></div>
+      End Time<div id='endTime'></div>
+    </div>
+    <br>
+
+
+
+
+
+    <script type="text/javascript" src="static/js/breaktimer.js"></script>
+
+  </body>
+</html>
+
+<!-- src="http://www.youtube.com/embed/{{id}} -->
